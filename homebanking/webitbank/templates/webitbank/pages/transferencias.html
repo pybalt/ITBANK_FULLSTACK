@@ -1,0 +1,62 @@
+{% extends "webitbank/index.html" %}
+
+{% block title%} Transferencias {% endblock %}
+
+
+{% block content %}
+      </section>
+        <div class="conteinerTitulos">
+            <h3>Transferencias</h3>
+            <button class="btnConsultas btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Consultas y Operaciones
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><button class="dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2" aria-controls="offcanvasRight2">CBU/Alias y Datos de cuenta</button></li>
+                <li><a class="dropdown-item" href="#">Resúmenes de cuenta</a></li>
+                <li><a class="dropdown-item" href="#">Compra-Venta de dólares</a></li>
+                <li><button class="dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Transferir</button></li>
+                <li><a class="dropdown-item" href="#">Solicitar baja de cuenta</a></li>
+              </ul>
+          </div>
+          <div class="containerTransferencias">
+            <div class="row">
+              <div class="col">Fecha</div>
+              <div class="col">Destinatario</div>
+              <div class="col">Tipo</div>
+              <div class="col">Importe</div>
+            </div>
+        </div>
+        <div class="containerTransferencia">
+            <div class="row">
+              <div class="col">14/07/22</div>
+              <div class="col">pepito</div>
+              <div class="col">Transferencia</div>
+              <div class="col">$5.000.000</div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btnNewTransferencia btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Nueva transferencia</button>
+        </div>
+        <section class="transferir">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style=" width: 35%;">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Nueva transferencia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" ></button>
+              </div>
+              <div class="mb-3" style="margin: 30px;">
+                <label for="formGroupExampleInput" class="form-label">CBU/CVU/Alias</label>
+                <input type="text" class="form-control" id="formGroupExampleInput">
+              </div>
+              <div class="mb-3" style="margin: 30px;">
+                <label for="formGroupExampleInput2" class="form-label">Monto</label>
+                <input type="number" class="form-control" id="formGroupExampleInput2" >
+              </div>
+              <button class="btnTransferir">Transferir</button>
+            </div>
+          </section>
+          
+    
+  </main>
+  <!--  pie de página principal -->
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "webitbank/index.html" %}
+
+{% block title%} Préstamos {% endblock %}
+
+
+{% block content %}
+    </section>
+      <div class="conteinerTitulos">
+        <h3>Préstamos</h3>
+        <button class="btnConsultas btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Consultas y Operaciones
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{% url 'turnos'%}">Solicitar préstamo</a></li>
+        </ul>
+    </div>
+    <div class="conteinerPrestamo">
+        <h3 class="prestamo">Podés solicitar tu préstamo en tu sucursal de lunes a viernes de 8 a 21hs.</h3>
+        
+        <!-- <img class=" imgPrestamo" src="../../public/images/prestamo.png" alt=""> -->
+    </div>
+    <p style="font-size: 20px;">Sacá turno <a href="{% url 'turnos'%}">aquí</a></p>
+  </main>
+  <!--  pie de página principal -->
+
+
+{%endblock%}

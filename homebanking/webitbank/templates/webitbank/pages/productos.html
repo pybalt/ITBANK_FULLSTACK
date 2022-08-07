@@ -1,0 +1,49 @@
+{% extends "webitbank/index.html" %}
+
+{% block title%} Tus productos {% endblock %}
+
+
+{% block content %}
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane active" id="tusProductos" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <div class="row">
+        <h2 class="producto">TUS PRODUCTOS</h2>
+        <lauta>
+          <div class="cont">
+
+            <div class="product-card">
+              <p class="titulo">Cuenta nºxxxxxxx</p>
+              <p>$0,00</p>
+              <p>U$s0,00</p>
+            </div>
+
+            <div class="product-card">
+              <p class="titulo">Visa Crédito xxxx-1234</p>
+              <p class="subt"> últimos consumos</p>
+              <p>$0,00</p>
+            </div>
+
+            <div class="product-card">
+              <p class="titulo">Visa Débito</p>
+              <p class="subt">Ver movimientos</p>
+            </div>
+
+            <div class="product-card">
+              <p class="titulo">Inversiones</p>
+              <p class="subt">Tenencia consolidada</p>
+            </div>
+
+            <div class="product-card">
+              <p class="titulo">Autenticación</p>
+              <p class="subt">Generar Token</p>
+
+            </div>
+
+          </div>
+        </lauta>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

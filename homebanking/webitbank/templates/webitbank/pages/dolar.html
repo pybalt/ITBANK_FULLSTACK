@@ -1,0 +1,59 @@
+{% extends "webitbank/index.html" %}
+
+{% block title%} Cotización Dólar {% endblock %}
+
+
+{% block content %}
+      <div class="container2">
+        <div class="row" id="cards-dolar">
+          <h2 class="producto">COTIZACIONES</h2>
+         <!-- AQUI VA LA COTIZACIÓN DEL DÓLAR -->
+
+        </div>
+      </div>
+               <!--Template compra-venta-->
+  
+  
+            
+      <!-- Finalizan las tabs -->
+
+    </section>
+    <template id="template">
+        <div class="col-sm-4">
+          <div class="card dolar">
+            <div class="card-body">
+              <h3 class="card-title">Dolar
+                <!--Variar según dato-->
+              </h3>
+              <div class="row compra-venta">
+                <!--Compra-->
+                <div class="col-6">
+                  <p class="card-text">Compra</p>
+                  <h3 class="precio compra">$
+                    <!--Precio-->
+                  </h3>
+                </div>
+                <!--Venta-->
+                <div class="col-6">
+                  <p class="card-text">Venta</p>
+                  <h3 class="precio venta">$
+                    <!--Precio-->
+                  </h3>
+                </div>
+                <p class="card-subtitle">variación:
+                  <!--+/-numero%-->
+                </p>
+              </div>
+              <p class="card-text fecha">ACTUALIZADO:
+                <!--fecha y hora-->
+              </p>
+            </div>
+          </div>
+        </div>
+      </template>
+  </main>
+  
+  <!--  pie de página principal -->
+  {%endblock%}
+
+  
