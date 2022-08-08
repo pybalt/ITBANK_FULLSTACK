@@ -14,7 +14,7 @@ def pagoServicios(request):
     for i in range(10):
         html_response += "<p>pito " + str(i) + "</p>"
     return HttpResponse(html_response) """
-    return render(request, "webitbank/pages/pago_servivios.html")
+    return render(request, "webitbank/pages/pago_servicios.html")
 
 def productos(request):
     return render(request, "webitbank/pages/productos.html")
