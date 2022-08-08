@@ -2,6 +2,10 @@
 from django.shortcuts import render, HttpResponse
 # Create your views here.
 
+def login(request):
+    return render(request, "webitbank/Login.html")
+
+
 def home(request):
     """ html_response = "<h1>Bienvenidos a mi sitio de prueba</h1>"
     for i in range(10):

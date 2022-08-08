@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS only -->
+    {%load static %}
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles/Login.css" />
+    <link rel="stylesheet" href="{% static 'webitbank/css/Login.css' %}"/>
     <title>Document</title>
   </head>
   <body>
     <div class="container">
       <div class="logo">
-        <img src="../public/images/itbank-logo.png" alt="itbank logo  " />
+        <img src="{% static 'webitbank/public/images/itbank-logo.png' %}" alt="itbank logo  " />
       </div>
       <main class="row">
         <div class="container-left-side col-12 col-md-5 col-sm-12">
@@ -29,7 +30,7 @@
           </div>
           <div class="container-image">
             <img
-              src="../public/images/vector.jpg"
+              src="{% static 'webitbank/public/images/vector.jpg' %}"
               alt="itbank"
               class="img-fluid"
             />
@@ -63,7 +64,7 @@
                 />
               </div>
               <div class="container-input my-3">
-                <a href="index.html"> Ingresar </a>
+                <a href="{% url 'home' %}"> Ingresar </a>
               </div>
             </form>
           </div>

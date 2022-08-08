@@ -20,6 +20,7 @@ from webitbank import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', views.login, name="login"),
     path('', views.home, name="home"),
     path('pagoServicios/', views.pagoServicios, name="pagoServicios"),
     path('productos/', views.productos, name="productos"),
