@@ -8,28 +8,13 @@
 from django.db import models
 
 
-class Cliente(models.Model):
-    customer_id = models.AutoField()
-    customer_name = models.TextField()
-    customer_surname = models.TextField()  # This field type is a guess.
-    customer_dni = models.TextField(db_column='customer_DNI')  # Field name made lowercase.
-    dob = models.TextField(blank=True, null=True)
-    branch_id = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'cliente'
 
 
-class Cuenta(models.Model):
-    account_id = models.AutoField()
-    customer_id = models.IntegerField()
-    balance = models.IntegerField()
-    iban = models.TextField()
 
-    class Meta:
-        managed = False
-        db_table = 'cuenta'
+
+
+
+
 
 
 class Empleado(models.Model):
@@ -45,16 +30,7 @@ class Empleado(models.Model):
         db_table = 'empleado'
 
 
-class Prestamo(models.Model):
-    loan_id = models.AutoField()
-    loan_type = models.TextField()
-    loan_date = models.TextField()
-    loan_total = models.IntegerField()
-    customer_id = models.IntegerField()
 
-    class Meta:
-        managed = False
-        db_table = 'prestamo'
 
 
 class Sucursal(models.Model):
