@@ -1,17 +1,14 @@
-
 from django.shortcuts import render, HttpResponse
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
 def login(request):
     return render(request, "webitbank/Login.html")
 
 def home(request):
-    
     return render(request, "webitbank/index.html")
 
 def pagoServicios(request):
-    return render(request, "webitbank/pago_servicios.html")
-         
+    return render(request, "webitbank/pages/pago_servicios.html")
 
 def productos(request):
     return render(request, "webitbank/pages/productos.html")

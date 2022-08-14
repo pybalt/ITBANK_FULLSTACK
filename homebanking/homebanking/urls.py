@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from webitbank import views
 
 
@@ -29,5 +29,9 @@ urlpatterns = [
     path('prestamos/', views.prestamos, name="prestamos"),
     path('seguros/', views.seguros, name="seguros"),
     path('transferencias/', views.transferencias, name="transferencias"),
-    path('turnos/', views.turnos, name="turnos")
+    path('turnos/', views.turnos, name="turnos"),
+    path('accounts/',include('django.contrib.auth.urls'))
 ]
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'login/'
