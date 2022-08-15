@@ -1,0 +1,4 @@
+#homebanking/homebanking/__pycache__/*
+#homebanking/webitbank/__pycache__/*
+homebanking/homebanking/__pycache__/settings.cpython-310.pyc
+homebanking/webitbank/__pycache__/views.cpython-310.pyc
