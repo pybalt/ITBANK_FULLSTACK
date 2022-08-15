@@ -32,6 +32,3 @@ urlpatterns = [
     path('turnos/', views.turnos, name="turnos"),
     path('accounts/',include('django.contrib.auth.urls'))
 ]
-
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'login/'

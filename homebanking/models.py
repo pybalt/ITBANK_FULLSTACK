@@ -7,16 +7,6 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-
-
-
-
-
-
-
-
-
-
 class Empleado(models.Model):
     employee_id = models.AutoField()
     employee_name = models.TextField()
@@ -25,11 +15,12 @@ class Empleado(models.Model):
     employee_dni = models.TextField(db_column='employee_DNI')  # Field name made lowercase.
     branch_id = models.IntegerField()
 
+    def __str__(self) -> str:
+        return self.name
+
     class Meta:
         managed = False
         db_table = 'empleado'
-
-
 
 
 
@@ -38,6 +29,9 @@ class Sucursal(models.Model):
     branch_number = models.BinaryField()
     branch_name = models.TextField()
     branch_address_id = models.IntegerField()
+
+    def __str__(self) -> str:
+        return self.name
 
     class Meta:
         managed = False

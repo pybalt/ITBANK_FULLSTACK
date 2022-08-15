@@ -42,7 +42,7 @@
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color:#fff">Bienvenid@</h5>
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color:#fff">{% if request.user.is_authenticated %}Bienvenid@, {{user}}{% endif %}</h5>
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
