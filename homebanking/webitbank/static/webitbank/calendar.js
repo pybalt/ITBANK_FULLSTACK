@@ -1,81 +1,278 @@
-let today = new Date();
-let currentMonth = today.getMonth();
-let currentYear = today.getFullYear();
-let selectYear = document.getElementById("year");
-let selectMonth = document.getElementById("month");
+const inputNombre = document.getElementById("nombre");
+const inputApellido= document.getElementById("apellido");
+const inputTelefono = document.getElementById("telefono");
+const inputFecha = document.getElementById("fecha");
+const inputHora = document.getElementById("hora");
+const inputRazon = document.getElementById("razon");
+const formulario = document.getElementById("nueva-cita");
+const contenedorTurnos = document.getElementById("turnos");
 
-let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let editando;
 
-let monthAndYear = document.getElementById("monthAndYear");
-showCalendar(currentMonth, currentYear);
+//Classes
 
+class Turnos {
+  constructor() {
+    this.turnos = [];
+  }
 
-function next() {
-    currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
-    currentMonth = (currentMonth + 1) % 12;
-    showCalendar(currentMonth, currentYear);
+  agregarTurno(turno) {
+    this.turnos = [...this.turnos, turno];
+
+    console.log(this.turnos);
+  }
+
+  eliminarTurno(id) {
+    this.turnos = this.turnos.filter((turno) => turno.id !== id);
+  }
+
+  editarTurno(turnoEditado){
+    this.turnos = this.turnos.map( turno => turno.id === turnoEditado.id ? turnoEditado : turno );
+  }
 }
 
-function previous() {
-    currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
-    currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-    showCalendar(currentMonth, currentYear);
-}
-
-function jump() {
-    currentYear = parseInt(selectYear.value);
-    currentMonth = parseInt(selectMonth.value);
-    showCalendar(currentMonth, currentYear);
-}
-
-function showCalendar(month, year) {
-
-    let firstDay = (new Date(year, month)).getDay();
-    let daysInMonth = 32 - new Date(year, month, 32).getDate();
-
-    let tbl = document.getElementById("calendar-body"); // body of the calendar
-
-    // clearing all previous cells
-    tbl.innerHTML = "";
-
-    // filing data about month and in the page via DOM.
-    monthAndYear.innerHTML = months[month] + " " + year;
-    selectYear.value = year;
-    selectMonth.value = month;
-
-    // creating all cells
-    let date = 1;
-    for (let i = 0; i < 6; i++) {
-        // creates a table row
-        let row = document.createElement("tr");
-
-        //creating individual cells, filing them up with data.
-        for (let j = 0; j < 7; j++) {
-            if (i === 0 && j < firstDay) {
-                let cell = document.createElement("td");
-                let cellText = document.createTextNode("");
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-            }
-            else if (date > daysInMonth) {
-                break;
-            }
-
-            else {
-                let cell = document.createElement("td");
-                let cellText = document.createTextNode(date);
-                if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-                    cell.classList.add("bg-info");
-                } // color today's date
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-                date++;
-            }
 
 
-        }
 
-        tbl.appendChild(row); // appending each row into calendar body.
+class UI {
+  imprimirAlerta(mensaje, tipo) {
+    //Crear div
+    const divMensaje = document.createElement("div");
+    divMensaje.classList.add("text-center", "alert", "d-block", "col-12");
+
+    if (tipo === "error") {
+      divMensaje.classList.add("alert-danger");
+    } else {
+      divMensaje.classList.add("alert-success");
     }
 
+    //Mensaje de error
+    divMensaje.textContent = mensaje;
+
+    //Agregar al DOM
+
+    document
+      .getElementById("contenido")
+      .insertBefore(divMensaje, document.querySelector(".agregar-cita"));
+
+    setTimeout(() => {
+      divMensaje.remove();
+    }, 4000);
+  }
+
+  imprimirTurnos({ turnos }) {
+    this.limpiarHTML();
+
+    turnos.forEach((turno) => {
+      const { nombre, apellido, telefono, fecha, hora, razon, id } =
+        turno;
+
+      const divTurno = document.createElement("div");
+      divTurno.classList.add("turno", "p-3");
+      divTurno.dataset.id = id;
+
+      //Scripting de cada elemento
+
+      const NombreParrafo = document.createElement("h2");
+      NombreParrafo.classList.add("card-title", "font-weight-bolder");
+      NombreParrafo.textContent = nombre;
+
+      const apellidoParrafo = document.createElement("p");
+      apellidoParrafo.innerHTML = `
+      <span class="font-weight-bolder"> Apellido: </span> ${apellido}
+      `;
+
+      const telefonoParrafo = document.createElement("p");
+      telefonoParrafo.innerHTML = `
+        <span class="font-weight-bolder"> Teléfono: </span> ${telefono}
+      `;
+
+      const fechaParrafo = document.createElement("p");
+      fechaParrafo.innerHTML = `
+        <span class="font-weight-bolder"> Fecha: </span> ${fecha}
+      `;
+
+      const horaParrafo = document.createElement("p");
+      horaParrafo.innerHTML = `
+        <span class="font-weight-bolder"> Hora: </span> ${hora}
+      `;
+
+      const razonParrafo = document.createElement("p");
+      razonParrafo.innerHTML = `
+        <span class="font-weight-bolder"> Razon: </span> ${razon}
+      `;
+
+      //Boton para eliminar el turno
+
+      const botonEliminar = document.createElement("button");
+      botonEliminar.classList.add("btn", "btn-danger", "mr-2");
+      botonEliminar.innerHTML = "Cancelar turno";
+
+      botonEliminar.onclick = () => eliminarTurno(id);
+
+      //Boton  para editar
+
+      const botonEditar = document.createElement("button");
+      botonEditar.classList.add("boton-editar");
+      botonEditar.innerHTML = "Editar";
+      botonEditar.onclick = () => cargarEdicion(turno);
+
+      divTurno.appendChild(NombreParrafo);
+      divTurno.appendChild(apellidoParrafo);
+      divTurno.appendChild(telefonoParrafo);
+      divTurno.appendChild(fechaParrafo);
+      divTurno.appendChild(horaParrafo);
+      divTurno.appendChild(razonParrafo);
+      divTurno.appendChild(botonEliminar);
+      divTurno.appendChild(botonEditar);
+
+      //Agregar al HTML
+      contenedorTurnos.appendChild(divTurno);
+    });
+  }
+
+  limpiarHTML() {
+    while (contenedorTurnos.firstChild) {
+      contenedorTurnos.removeChild(contenedorTurnos.firstChild);
+    }
+  }
+}
+
+const ui = new UI();
+const administrarTurnos = new Turnos();
+
+//Eventos
+
+listener();
+
+function listener() {
+  inputNombre.addEventListener("input", datosTurno);
+  inputApellido.addEventListener("input", datosTurno);
+  inputTelefono.addEventListener("input", datosTurno);
+  inputFecha.addEventListener("input", datosTurno);
+  inputHora.addEventListener("input", datosTurno);
+  inputRazon.addEventListener("input", datosTurno);
+
+  formulario.addEventListener("submit", nuevoTurno);
+}
+
+//Objeto donde se guardan todos los datos
+const turnoObj = {
+  nombre: "",
+  apellido: "",
+  telefono: "",
+  fecha: "",
+  hora: "",
+  razon: "",
+};
+
+//Funciones
+
+function datosTurno(e) {
+  turnoObj[e.target.name] = e.target.value;
+}
+
+//Valida y agrega los turnos a la clase de turnos
+
+function nuevoTurno(e) {
+  e.preventDefault();
+
+  //Extrear informacion del objeto de turnos (simula una base de datos)
+
+  const { nombre, apellido, telefono, fecha, hora, razon } = turnoObj;
+
+  if (
+    nombre === "" ||
+    apellido === "" ||
+    telefono === "" ||
+    fecha === "" ||
+    hora === "" ||
+    razon === ""
+  ) {
+    ui.imprimirAlerta("Todos los campos son obligatorios", "error");
+    return;
+  }
+
+  if (editando) {
+    console.log('modo edicion');
+    ui.imprimirAlerta('Se guardaron los cambios');
+ 
+    //Editar el objeto que contiene los datos
+    administrarTurnos.editarTurno({ ...turnoObj });
+
+
+
+    formulario.querySelector('button[type="submit"]').textContent = "Agendar turno";
+
+    editando = false;
+
+  } else {
+    console.log('modo nuevo turno');
+    //ID unico
+    turnoObj.id = Date.now();
+
+    //Creando nuevo turno
+
+    administrarTurnos.agregarTurno({ ...turnoObj });
+
+    //Mensaje de agregado correctamente
+
+    ui.imprimirAlerta('Se agrego con éxito');
+  }
+
+  //Reiniciar el formulario y el objeto
+
+  formulario.reset();
+  reiniciarObjeto();
+
+  //Mostrar html de los turnos
+
+  ui.imprimirTurnos(administrarTurnos);
+}
+
+function reiniciarObjeto() {
+  turnoObj.nombre = "";
+  turnoObj.apellido = "";
+  turnoObj.telefono = "";
+  turnoObj.fecha = "";
+  turnoObj.hora = "";
+  turnoObj.razon = "";
+}
+
+function eliminarTurno(id) {
+  administrarTurnos.eliminarTurno(id);
+
+  ui.imprimirAlerta("Turno cancelado con exito");
+
+  ui.imprimirTurnos(administrarTurnos);
+}
+
+//Edicion
+
+function cargarEdicion(turno) {
+  const { nombre, apellido, telefono, fecha, hora, razon } = turno;
+
+  //Lenar los inputs
+
+  inputNombre.value = nombre;
+  inputApellido.value = apellido;
+  inputTelefono.value = telefono;
+  inputFecha.value = fecha;
+  inputHora.value = hora;
+  inputRazon.value = razon;
+
+  //Llenar el objeto
+
+  turnoObj.nombre = nombre;
+  turnoObj.apellido = apellido;
+  turnoObj.telefono = telefono;
+  turnoObj.fecha = fecha;
+  turnoObj.hora = hora;
+  turnoObj.razon = razon;
+
+  //Cambiar texto de boton
+
+  formulario.querySelector('button[type="submit"]').textContent = "Guardar cambios";
+
+  editando = true;
 }
