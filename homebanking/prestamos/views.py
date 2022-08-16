@@ -4,7 +4,7 @@ from .forms import SolicitudPrestamoForm
 from .models import Prestamo
 from clientes import models as cliente_models
 from cuentas import models as cuentas_models
-import datetime
+from tarjetas import models as tarjetas_models
 
 def chequearUsuarioFormulario(nombreUsuario, apellidoUsuario, dniUsuario, 
 nombreFormulario, apellidoFormulario, dniFormulario):
@@ -28,7 +28,7 @@ def prestamos(request):
             #Datos A sacar de la sesion actual
             nameUser= 'Galvin'
             surnameUser = 'Nunez'
-            dniUser = 79514215
+            dniUser = '79514215'
             #Datos a comparar sacados del Formulario
             nameRecived = request.POST.get('Nombres','')
             surnameRecived = request.POST.get('Apellidos','')
@@ -40,15 +40,17 @@ def prestamos(request):
             #Formateo de Fecha
             #loan_dateRecivedString = loan_dateRecived.strftime('%d/%m/%Y')
             #Comprobar si coincide formulario con Sesión
+            print(nameRecived)
             if chequearUsuarioFormulario(nameUser,surnameUser,dniUser,
             nameRecived,surnameRecived,dniRecived):
                 #Extracción del cliente a partie de nombre, apellido y dni
-                cliente_filtrado = cliente_models.objects.filter(customer_name=nameRecived).filter(customer_surname=surnameRecived).filter(custumer_dni= dniRecived)
+                cliente_filtrado = cliente_models.Cliente.objects.filter(customer_name=nameRecived).filter(customer_surname=surnameRecived).filter(custumer_dni= dniRecived)
                 #Obtención del Customer ID
                 customer_idRecived = cliente_filtrado.get('customer_id','')
                 print(customer_idRecived)
                 #Obtención del Tipo de Cliente
-                tipoDeCliente = cliente_filtrado.get('tipo_cliente','')
+                tarjeta = tarjetas_models.Cards.objects.filter(customer_id = customer_idRecived)[:1]
+                tipoDeCliente = cliente_models.Tipocliente.objects.filter(tipo_clienteid = tarjeta.tipo_clienteid).tipo_cliente
                 print(tipoDeCliente)
                 #Comprobación Monto dentro del límite
                 if chequearMonto(loan_totalRecived, tipoDeCliente):

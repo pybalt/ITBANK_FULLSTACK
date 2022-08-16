@@ -83,19 +83,7 @@ class Sucursal(models.Model):
         db_table = 'sucursal'
 
 
-class Tipocliente(models.Model):
-    tipo_clienteid = models.AutoField(db_column='tipo_clienteId')  # Field name made lowercase.
-    tipo_cliente = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'tipoCliente'
 
 
-class Tipocuenta(models.Model):
-    tipo_cuentaid = models.AutoField(db_column='tipo_cuentaId')  # Field name made lowercase.
-    tipo_cuenta = models.TextField()
 
-    class Meta:
-        managed = False
-        db_table = 'tipoCuenta'
+
