@@ -79,4 +79,4 @@ class Sucursal(models.Model):
 
 class Usuario(models.Model):  
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    customer_dni = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    customer_dni = models.OneToOneField(Cliente, on_delete=models.CASCADE)
