@@ -9,7 +9,17 @@ class Cliente(models.Model):
     customer_dni = models.TextField(db_column='customer_DNI')  # Field name made lowercase.
     dob = models.TextField(blank=True, null=True)
     branch_id = models.IntegerField()
+    tipo_cliente = models.TextField()
 
     class Meta:
         managed = False
         db_table = 'cliente'
+"""
+class TipoCliente(models.Model):
+    tipo_clienteId = models.AutoField()
+    tipo_cliente = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'tipo_cliente'
+"""
