@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Cards(models.Model):
-    customer_id = models.AutoField()
+    customer_id = models.AutoField(primary_key=True)
     numero_tarjeta = models.TextField()  # This field type is a guess.
     cvv = models.TextField()  # This field type is a guess.
     fecha_otorgamiento = models.TextField()  # This field type is a guess.

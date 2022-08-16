@@ -8,8 +8,20 @@
 </head>
 <body>
     {% if 'ok' in request.GET %}
-    <p><b>Su mensaje se ha enviado correctamente, en breve nos pondremos encontacto</b></p>
+    <p><b>Su prestamo ah sido aceptado, el saldo de su cuenta ya fue actualizado</b></p>
     {% endif %}
+    {% if 'notok' in request.GET %}
+    <p><b>Alguno de los campos ingresados no es válido</b></p>
+    {% endif %}
+    {% if 'nomonto' in request.GET %}
+    <p><b>El monto solicitado supera el límite establecido para su cuenta.
+        Los límites son: 500000 para clientes Black, 300000 para clientes Gold y 10000 para clientes Classic</b></p>
+    {% endif %}
+    {% if 'nocoincide' in request.GET %}
+    <p><b>Los datos ingresados en el formulario no coincide con los asociados al usuario logueado. 
+        Recuerde que solo puede solicitar el prestamo desde el usuario asociado a la cuenta en la que desea recibir el dinero</b></p>
+    {% endif %}
+
     
     <form action="" method="post">
         {% csrf_token %}
