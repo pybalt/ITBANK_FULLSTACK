@@ -127,3 +127,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'login/'
 
 #AUTH_USER_MODEL = 'webitbank.Usuario'
+
+'''
+Aviso:
+Esa parte del código está comentada porque solo puede funcionar antes de hacer el primer 
+'''
