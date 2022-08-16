@@ -10,7 +10,7 @@ def home(request):
     return render(request, "webitbank/index.html")
 
 def pagoServicios(request):
-    return render(request, "webitbank/pago_servicios.html")
+    return render(request, "webitbank/pages/pago_servicios.html")
          
 
 def productos(request):
