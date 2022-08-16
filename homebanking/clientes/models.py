@@ -14,7 +14,6 @@ class Cliente(models.Model):
         managed = False
         db_table = 'cliente'
 
-
 class Tipocliente(models.Model):
     tipo_clienteid = models.AutoField(db_column='tipo_clienteId', primary_key=True)  # Field name made lowercase.
     tipo_cliente = models.TextField()
