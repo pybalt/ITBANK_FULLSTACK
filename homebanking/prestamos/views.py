@@ -82,6 +82,6 @@ def prestamos(request):
                 return redirect(reverse('prestamos')+ "?nomonto") 
             return redirect(reverse('prestamos')+"?nocoincide")  
         return redirect(reverse('prestamos')+ "?notok")    
-    return render(request, "prestamos/prestamos.html",
+    return render(request, "webitbank/pages/prestamos.html",
     {'form':form_prestamo})
 # Create your views here.
