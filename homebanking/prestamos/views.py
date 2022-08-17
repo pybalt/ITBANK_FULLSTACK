@@ -6,9 +6,6 @@ from .models import Prestamo
 from clientes.models import Cliente,Tipocliente 
 from cuentas.models import Cuenta
 from tarjetas.models import Cards
-#from clientes import models as cliente_models
-#from cuentas import models as cuentas_models
-#from tarjetas import models as tarjetas_models
 
 def chequearUsuarioFormulario(nombreUsuario, apellidoUsuario, dniUsuario, 
 nombreFormulario, apellidoFormulario, dniFormulario):
@@ -20,9 +17,6 @@ nombreFormulario, apellidoFormulario, dniFormulario):
 def chequearMonto(monto,tipo_Cliente):
     montos = {'Classic': 100000,'Gold': 300000, 'Black': 500000}
     limit = montos.get(tipo_Cliente,'')
-    print('Tipo de dato monto y limit:')
-    print(type(monto).__name__)
-    print(type(limit).__name__)
     if monto <= limit:
         return True
     return False
@@ -52,7 +46,7 @@ def prestamos(request):
             nameRecived,surnameRecived,dniRecived):
                 print('Coinciden datos de usuario con los de cliente')
                 #Extracción del cliente a partie de nombre, apellido y dni
-                cliente_filtrado = Cliente.objects.filter(customer_name=nameRecived).filter(customer_surname=surnameRecived).filter(customer_dni= dniRecived).using(alias='itbank')
+                cliente_filtrado = Cliente.objects.filter(customer_name=nameRecived).filter(customer_surname=surnameRecived).filter(customer_dni= dniRecived)#.using(alias='itbank')
                 print('Cliente Filtrado:')
                 #print(cliente_filtrado)
                 #Obtención del Customer ID
@@ -60,19 +54,19 @@ def prestamos(request):
                 print('customer_idRecived:')
                 print(customer_idRecived)
                 #Obtención del Tipo de Cliente
-                tarjeta = Cards.objects.filter(customer_id = customer_idRecived).using(alias='itbank')
+                tarjeta = Cards.objects.filter(customer_id = customer_idRecived)#.using(alias='itbank')
                 tipoClienteId = tarjeta.get(customer_id = customer_idRecived).tipo_clienteid
                 print(tipoClienteId)
-                tipoDeClienteQS = Tipocliente.objects.filter(tipo_clienteid = tipoClienteId).using(alias='itbank')
+                tipoDeClienteQS = Tipocliente.objects.filter(tipo_clienteid = tipoClienteId)#.using(alias='itbank')
                 tipoDeCliente =tipoDeClienteQS.get(tipo_clienteid = tipoClienteId).tipo_cliente
                 print(tipoDeCliente)
                 #Comprobación Monto dentro del límite
                 if chequearMonto(loan_totalRecived, tipoDeCliente):
                     #Se cargan los datos a la tabla de prestamos
                     Prestamo(loan_type=loan_typeRecived, loan_date=loan_dateRecived,
-                    loan_total=loan_totalRecived, customer_id =customer_idRecived).save(using='itbank')
+                    loan_total=loan_totalRecived, customer_id =customer_idRecived).save()#using='itbank')
                     #Se modifica el campo balance de la tabla de Cuenta
-                    cuentasQS=Cuenta.objects.all().using(alias='itbank')
+                    cuentasQS=Cuenta.objects.all()#.using(alias='itbank')
                     #cuentaAmodificar = Cuenta.objects.filter(customer_id=customer_idRecived)
                     balancePrevio= cuentasQS.get(customer_id=customer_idRecived).balance
                     print('balance previo')
