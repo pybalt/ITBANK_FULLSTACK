@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webitbank'
+    'webitbank',
+    'prestamos',
+    'clientes',
+    'cuentas',
+    'login',
+    'tarjetas',
 ]
 
 MIDDLEWARE = [

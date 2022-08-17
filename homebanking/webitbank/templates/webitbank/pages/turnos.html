@@ -1,16 +1,94 @@
 {% extends "webitbank/base.html" %}
 
+{%load static %}
+<link rel="stylesheet" href="{% static 'webitbank/css/calendar.css' %}"/>
 {% block title%} Turnos {% endblock %}
 
 
 {% block content %}
           <div class="container2">
             <div class="row">
-              AQUI VA TURNOS ONLINE
+
             </div>
           </div>
       <!-- Finalizan las tabs -->
 
+    </section>
+      <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Administrador de turnos</title>
+            <link rel="stylesheet" href="css/bootstrap.css">
+            <link rel="stylesheet" href="{% static 'webitbank/css/calendar.css' %}">
+        </head>
+        <body>
+            <h2 class="text-center my-5 titulo">Administrador de Turnos</h2>
+            <div class="container mt-5 p-5">
+                <div id="contenido" class="row">
+                    <div class="col-md-6 agregar-cita">
+                        <form id="nueva-cita">
+                            <legend class="mb-4">Datos del solicitante</legend>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-lg-4 col-form-label">Nombre:</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-lg-4 col-form-label">Apellido:</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <input type="text" id="apellido" name="apellido" class="form-control"  placeholder="Apellido">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-lg-4 col-form-label">Teléfono:</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <input type="tel" id="telefono" name="telefono" class="form-control"  placeholder="Número de Teléfono">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-lg-4 col-form-label">Fecha:</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <input type="date" id="fecha" name="fecha" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-lg-4 col-form-label">Hora:</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <input type="time" id="hora" name="hora" class="form-control">
+                                </div>
+                            </div>
+        
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-lg-4 col-form-label">Razon de turno:</label>
+                                <div class="col-sm-8 col-lg-8">
+                                    <textarea id="razon" name="razon" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <button type="submit" class="btn btn-success w-100 d-block">Agendar turno</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6 listado">
+                        <h2 id="administra" class="mb-4">Administra tus Turnos</h2>
+                        <ul id="turnos" class="list-group lista-citas"></ul>
+                    </div>
+                </div> <!--.row-->
+            </div><!--.container-->
+        
+            <script src="{% static 'webitbank/calendar.js' %}"></script>
+        
+        </body>
+        </html>
+
+
+    
+ 
+ 
     </section>
   </main>
   <!--  pie de página principal -->
