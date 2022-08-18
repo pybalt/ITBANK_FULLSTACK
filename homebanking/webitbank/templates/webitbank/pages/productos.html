@@ -39,7 +39,8 @@
 
             <div class="product-card">
               <p class="titulo">Autenticación</p>
-              <p class="subt">Generar Token</p>
+              <input type="button" value="Generar Token" onclick="Random();" />
+              <input type="text" id="tb" name="tb" />
 
             </div>
 
@@ -47,6 +48,7 @@
         </lauta>
       </div>
   </div>
+  <script src="{% static 'webitbank/token.js' %}"></script>
 </div>
 
 {% endblock %}
