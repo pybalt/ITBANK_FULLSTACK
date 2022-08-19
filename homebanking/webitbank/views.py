@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 import requests
 
 def login(request):
-    return render(request, "webitbank/Login.html")
+    return render(request, "registration/Login.html")
 
 @login_required
 def home(request):
