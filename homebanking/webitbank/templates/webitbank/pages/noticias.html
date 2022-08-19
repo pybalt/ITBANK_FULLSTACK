@@ -4,42 +4,42 @@
 
 
 {% block content %}
-          <div class="container2">
-            <div class="row">
+          <div class="container">
+            <div class="container">
                 <div class="row noticias">
+                  <h2>Noticias</h2>
                   {% for title, desc, i in mylist %}
                     <!--Título-->
-                    <h2>Noticias</h2>
                     <hr>
                     <!--Tarjeta-->
-                    <article class="col-12 col-md-4">
                       <div class="card">
                         <div class="card-body">
                           <a href="#">
                             <h5 class="card-title">Noticia</h5>
                           </a>
-                          <div class="row">
-                            <div class="column is-offset-16 is-10">
-                              <div class="box">
-                                  <article class="media">
-                                      <div class="media-content">
-                                          <div class="content">
-                                              <p>
-                                                  <span class="title">{{ title }}</span>
-                                                  <br>
-                                                  <img src="{{ i }}" alt="">
-                                                  <span class="subtitle">{{ desc }}</span>
-                        
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </article>
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-12 column is-offset-16 is-10">
+                                <div class="box">
+                                    <article class="media">
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <span class="title">{{ title }}</span>
+                                                    <br>
+                                                    <img src="{{ i }}" alt="">
+                                                    <span class="subtitle">{{ desc }}</span>
+                          
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </article>
                     {% endfor %}
                   </div>
             </div>
