@@ -19,17 +19,17 @@ from webitbank import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('login/', views.login, name="login"),
-    path('', views.home, name="home"),
-    path('pagoServicios/', views.pagoServicios, name="pagoServicios"),
-    path('productos/', views.productos, name="productos"),
-    path('dolar/', views.dolar, name="dolar"),
-    path('noticias/', views.noticias, name="noticias"),
-    #path('prestamos/', views.prestamos, name="prestamos"),
-    path('prestamos/', include('prestamos.urls')),
-    path('seguros/', views.seguros, name="seguros"),
-    path('transferencias/', views.transferencias, name="transferencias"),
-    path('turnos/', views.turnos, name="turnos"),
-    path('accounts/',include('django.contrib.auth.urls'))
+    path('admin/',              admin.site.urls),
+    path('login/',              views.login,                                name="login"),
+    path('',                    views.home,                                 name="home"),
+    path('pagoServicios/',      views.pagoServicios,                        name="pagoServicios"),
+    path('productos/',          views.productos,                            name="productos"),
+    path('dolar/',              views.dolar,                                name="dolar"),
+    path('noticias/',           views.noticias,                             name="noticias"),
+    #path('prestamos/',         views.prestamos,                            name="prestamos"),
+    path('prestamos/',          include('prestamos.urls')),
+    path('seguros/',            views.seguros,                              name="seguros"),
+    path('transferencias/',     views.transferencias,                       name="transferencias"),
+    path('turnos/',             views.turnos,                               name="turnos"),
+    path('accounts/',           include('django.contrib.auth.urls'))
 ]
