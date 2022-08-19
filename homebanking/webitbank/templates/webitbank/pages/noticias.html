@@ -7,6 +7,7 @@
           <div class="container2">
             <div class="row">
                 <div class="row noticias">
+                  {% for title, desc, i in mylist %}
                     <!--Título-->
                     <h2>Noticias</h2>
                     <hr>
@@ -15,63 +16,35 @@
                       <div class="card">
                         <div class="card-body">
                           <a href="#">
-                            <h5 class="card-title">Noticia 2</h5>
+                            <h5 class="card-title">Noticia</h5>
                           </a>
                           <div class="row">
-                            <div class="col">
-                              <p class="card-text">Breve descripción de la noticia.
-                                Para leer la noticia completa se debe hacer click
-                                sobre el título</p>
-                            </div>
-                            <div class="col">
-                              <img src="../../public/images/imagen.png" class="card-img-top" alt="imagen">
-                            </div>
+                            <div class="column is-offset-16 is-10">
+                              
+                              <div class="box">
+                                  <article class="media">
+                                      <div class="media-content">
+                                          <div class="content">
+                                              <p>
+                                                  <span class="title">{{ title }}</span>
+                                                  <br>
+                                                  <img src="{{ i }}" alt="">
+                                                  <span class="subtitle">{{ desc }}</span>
+                                                  
+                                              </p>
+                                          </div>
+                                      </div>
+                                  </article>
+                              </div>
+                              
+                          </div>
+
                           </div>
                         </div>
                       </div>
                     </article>
-                    <article class="col-12 col-md-4">
-                      <!--Tarjeta-->
-                      <div class="card">
-                        <div class="card-body">
-                          <a href="#">
-                            <h5 class="card-title">Noticia 1</h5>
-                          </a>
-                          <div class="row">
-                            <div class="col">
-                              <p class="card-text">Breve descripción de la noticia.
-                                Para leer la noticia completa se debe hacer click
-                                sobre el título</p>
-                            </div>
-                            <div class="col">
-                              <img src="../../public/images/imagen.png" class="card-img-top" alt="imagen">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-        
-                    <article class="col-12 col-md-4">
-                      <!--Tarjeta-->
-                      <div class="card">
-                        <div class="card-body">
-        
-                          <a href="#">
-                            <h5 class="card-title">Noticia 3</h5>
-                          </a>
-                          <div class="row">
-                            <div class="col">
-                              <p class="card-text">Breve descripción de la noticia.
-                                Para leer la noticia completa se debe hacer click
-                                sobre el título</p>
-                            </div>
-                            <div class="col">
-                              <img src="../../public/images/imagen.png" class="card-img-top" alt="imagen">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
+   
+                    {% endfor %}
                   </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
+import requests
 
 def login(request):
     return render(request, "webitbank/Login.html")
@@ -22,7 +23,20 @@ def dolar(request):
 
 @login_required
 def noticias(request):
-    return render(request, "webitbank/pages/noticias.html")
+    url = 'https://newsapi.org/v2/everything?q=Cryptocurrency&from=2022-08-01&sortBy=popularity&apiKey=533ada2ab21546568011c689d22edda6'
+    crypto_news = requests.get(url).json()
+    a = crypto_news['articles']
+    desc =[]
+    title =[]
+    img =[]
+    for i in range(len(a)):
+            f = a[i]
+            title.append(f['title'])
+            desc.append(f['description'])
+            img.append(f['urlToImage'])
+    mylist = zip(title, desc, img)
+    context = {'mylist': mylist}
+    return render(request, "webitbank/pages/noticias.html", context)
 
 @login_required
 def prestamos(request):
@@ -39,3 +53,5 @@ def turnos(request):
 @login_required
 def seguros(request):
     return render(request, "webitbank/pages/seguros.html")
+
+
