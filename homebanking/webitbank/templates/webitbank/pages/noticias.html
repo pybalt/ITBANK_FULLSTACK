@@ -4,50 +4,24 @@
 
 
 {% block content %}
-          <div class="container">
-            <div class="container">
-                <div class="row noticias">
-                  <h2>Noticias</h2>
-                  {% for title, desc, i in mylist %}
-                    <!--Título-->
-                    <hr>
-                    <!--Tarjeta-->
-                      <div class="card">
-                        <div class="card-body">
-                          <a href="#">
-                            <h5 class="card-title">Noticia</h5>
-                          </a>
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-12 column is-offset-16 is-10">
-                                <div class="box">
-                                    <article class="media">
-                                        <div class="media-content">
-                                            <div class="content">
-                                                <p>
-                                                    <span class="title">{{ title }}</span>
-                                                    <br>
-                                                    <img src="{{ i }}" alt="">
-                                                    <span class="subtitle">{{ desc }}</span>
-                          
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    {% endfor %}
+          <div class="container m-0 p-0 pb-3">
+            <h2 class="text-align text-center text-info p-3 pb-0">Noticias</h2>
+            {% for title, desc, i, url in mylist %}
+              <!--Título-->
+              <hr>
+              <!--Tarjeta-->
+                <div class="card">
+                  <img src="{{ i }}" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <a href="{{ url }}" target = "_blank">
+                      <h5 class="card-title">{{ title }}</h5>
+                    </a>
+                    <p class="card-text">{{ desc }}</p>
                   </div>
+                </div>
+                {% endfor %}
             </div>
-          </div>
       <!-- Finalizan las tabs -->
-
-    </section>
-  </main>
   <!--  pie de página principal -->
 
-  {%endblock%}
+  {% endblock content %}
