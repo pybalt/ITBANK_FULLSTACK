@@ -53,7 +53,7 @@ def prestamos(request):
                     loan_total=loan_totalRecived, customer_id =customer_idRecived).save()
                     #Se modifica el campo balance de la tabla de Cuenta
                     print('antes de crear el QS')
-                    cuentaQS = Cuenta.objects.filter(customer_id=customer_idRecived)[:1]
+                    cuentaQS = Cuenta.objects.filter(customer_id=customer_idRecived)
                     print('Después de Crear el QS')
                     balancePrevio= cuentaQS.get(customer_id=customer_idRecived).balance
                     print('balance previo')
