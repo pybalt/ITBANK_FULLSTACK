@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
 
 def login(request):
-    return render(request, "registration/Login.html")
+    return render(request, "registration/login.html")
 
 @login_required
 def home(request):
