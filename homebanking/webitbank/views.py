@@ -26,15 +26,17 @@ def noticias(request):
     url = 'https://newsapi.org/v2/everything?q=Cryptocurrency&from=2022-08-01&sortBy=popularity&apiKey=533ada2ab21546568011c689d22edda6'
     crypto_news = requests.get(url).json()
     a = crypto_news['articles']
-    desc =[]
-    title =[]
-    img =[]
-    for i in range(len(a)):
+    desc = []
+    title = []
+    img = []
+    url = []
+    for i in range(5):
             f = a[i]
             title.append(f['title'])
             desc.append(f['description'])
             img.append(f['urlToImage'])
-    mylist = zip(title, desc, img)
+            url.append(f['url'])
+    mylist = zip(title, desc, img, url)
     context = {'mylist': mylist}
     return render(request, "webitbank/pages/noticias.html", context)
 
