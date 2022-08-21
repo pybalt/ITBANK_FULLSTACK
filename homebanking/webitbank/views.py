@@ -53,7 +53,7 @@ def turnos(request):
     return render(request, "webitbank/pages/turnos.html")
 
 @login_required
-def seguros(request):
-    return render(request, "webitbank/pages/seguros.html")
+def sucursales(request):
+    return render(request, "webitbank/pages/sucursales.html")
 
 

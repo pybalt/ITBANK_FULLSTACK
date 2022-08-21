@@ -28,7 +28,7 @@ urlpatterns = [
     path('noticias/',           views.noticias,                             name="noticias"),
     #path('prestamos/',         views.prestamos,                            name="prestamos"),
     path('prestamos/',          include('prestamos.urls')),
-    path('seguros/',            views.seguros,                              name="seguros"),
+    path('sucursales/',         views.sucursales,                              name="sucursales"),
     path('transferencias/',     views.transferencias,                       name="transferencias"),
     path('turnos/',             views.turnos,                               name="turnos"),
     path('accounts/',           include('django.contrib.auth.urls'))
