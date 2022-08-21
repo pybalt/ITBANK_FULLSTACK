@@ -1,5 +1,7 @@
 {% extends "webitbank/base.html" %}
-
+{%load static %}
+<link rel="stylesheet" href="{% static 'webitbank/imagenes' %}"/>
+<link rel="stylesheet" href="{% static 'webitbank/css' %}"/>
 {% block title%} Tus productos {% endblock %}
 
 
@@ -11,21 +13,22 @@
         <h2 class="producto">TUS PRODUCTOS</h2>
         <lauta>
           <div class="cont">
-
             <div class="product-card">
               <p class="titulo">Cuenta nºxxxxxxx</p>
+              <p>{{user}}</p>
               <p>$0,00</p>
               <p>U$s0,00</p>
             </div>
 
             <div class="product-card">
               <p class="titulo">Visa Crédito xxxx-1234</p>
-              <p class="subt"> últimos consumos</p>
+              <p>{{user}}</p>
               <p>$0,00</p>
             </div>
 
             <div class="product-card">
-              <p class="titulo">Visa Débito</p>
+              <p class="titulo">Visa Débito  xxxx-1234</p>
+              <p>{{user}}</p>
               <p class="subt">Ver movimientos</p>
             </div>
 
@@ -36,7 +39,8 @@
 
             <div class="product-card">
               <p class="titulo">Autenticación</p>
-              <p class="subt">Generar Token</p>
+              <input type="button" value="Generar Token" onclick="Random();" />
+              <input type="text" id="tb" name="tb" />
 
             </div>
 
@@ -44,6 +48,7 @@
         </lauta>
       </div>
   </div>
+  <script src="{% static 'webitbank/token.js' %}"></script>
 </div>
 
 {% endblock %}

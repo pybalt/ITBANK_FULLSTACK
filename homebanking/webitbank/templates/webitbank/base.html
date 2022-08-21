@@ -112,50 +112,49 @@
   <main class="container principal ">
 
     <section class="navigation-tabs">
-      <h3 class="producto">ACCESOS DIRECTOS</h3>
+      <h3 class="producto text-center">ACCESOS DIRECTOS</h3>
 
 
       <!--LAUTA-->
-
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
+      <div class="row">
+        <div class="col-3">
           <a href="{% url 'productos'%}"><button class="btn2 icon-credit-card active" id="home-tusproductos" data-bs-toggle="tab" data-bs-target="#tusProductos"
             type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Tus productos</button></a>
-        </li>
-        <li class="nav-item" role="presentation">
+  
           <a href="{% url 'transferencias'%}"><button class="btn2 icon-transfer" id="home-transferencias" data-bs-toggle="tab" 
             type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true" hreff="pages/transferencias.html">Transferencias</button></a>
-        </li>
-        <li class="nav-item" role="presentation">
+  
           
-          <a href="{% url 'pagoServicios'%}"><button class="btn2 icon-coin-dollar" id="home-pago" data-bs-toggle="tab"
-            type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Pago de Servicios</button></a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a href="{% url 'prestamos'%}"><button class="btn2 icon-handshake-o" id="home-prestamos" data-bs-toggle="tab"
-            type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Prestamos</button></a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a href="{% url 'seguros'%}"><button class="btn2 icon-lockedheart" id="home-seguros" data-bs-toggle="tab" 
-            type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Seguros</button></a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a href="{% url 'turnos'%}"><button class="btn2 icon-calendar" id="home-turnos" data-bs-toggle="tab" 
-            type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Turnos Online</button></a>
-        </li>
-        <li class="nav-item" role="presentation">
+          </div>
+          <div class="col-3">
+            <a href="{% url 'pagoServicios'%}"><button class="btn2 icon-coin-dollar" id="home-pago" data-bs-toggle="tab"
+              type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Pago de Servicios</button></a>
+    
+            <a href="{% url 'prestamos'%}"><button class="btn2 icon-handshake-o" id="home-prestamos" data-bs-toggle="tab"
+              type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Prestamos</button></a>
+          </div>
+          <div class="col-3">
+            <a href="{% url 'seguros'%}"><button class="btn2 icon-lockedheart" id="home-seguros" data-bs-toggle="tab" 
+              type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Seguros</button></a>
+      
+            <a href="{% url 'turnos'%}"><button class="btn2 icon-calendar" id="home-turnos" data-bs-toggle="tab" 
+              type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Turnos Online</button></a>
+          </div>
+        <div class="col-3">
           <a href="{% url 'dolar'%}"><button class="btn2 icon-dollar" id="home-dolar" data-bs-toggle="tab" data-bs-target="#dolar" type="button"
             role="tab" aria-controls="home-tab-pane" aria-selected="true">Cotización del Dólar</button></a>
-        </li>
-        <li class="nav-item" role="presentation">
+    
           <a href="{% url 'noticias'%}"><button class="btn2 icon-dollar" id="home-noticias" data-bs-toggle="tab" type="button"
             role="tab" aria-controls="home-tab-pane" aria-selected="true">Noticias</button></a>
-        </li>
-      </ul>
+        </div>
+      </div>
 
-      {%block content%}
 
-      {% endblock %}
+
+
+      {%block content %}
+
+      {% endblock content %}
 
 
 
@@ -166,7 +165,7 @@
   </main>
   <!--  pie de página principal -->
 
-  <footer class="container">
+  <footer class="container pt-5">
     <div class="row footer">
       <div class="col-12 col-md-5 primera-columna-footer">
         <div class="grid-header"> <img src="{% static 'webitbank/public/images/itbank-logo.png' %}"> </div>
