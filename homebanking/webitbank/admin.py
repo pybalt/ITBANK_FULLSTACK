@@ -1,22 +1,11 @@
 from re import L
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.models import User
-from webitbank.models import (Usuario, Cards, Cliente,
-                              Cuenta,
-                              Empleado, Prestamo, Sucursal)
-
-
-class UsuarioInline(admin.StackedInline):
-    model = Usuario
-    can_delete = False
-    verbose_name_plural = 'usuario'
-
-class UserAdmin(BaseUserAdmin):
-    inlines = (UsuarioInline,)
-
-admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
+from tarjetas.models import Cards
+from clientes.models import (Cliente, TipoCliente)
+from cuentas.models import (Cuenta, TipoCuenta)
+from prestamos.models import Prestamo
+from webitbank.models import (Empleado, Sucursal, Direcciones)
+from movimiento.models import Movimientos
 
 
 @admin.register(Cards)
@@ -42,6 +31,13 @@ class CuentaAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(Direcciones)
+class DireccionesAdmin(admin.ModelAdmin):
+    list_display = ['direccion_id', 'ciudad', 'provincia', 'pais']
+    search_fields = ('ciudad', )
+    pass
+
+
 
 @admin.register(Empleado)
 class EmpleadoAdmin(admin.ModelAdmin):
@@ -49,6 +45,10 @@ class EmpleadoAdmin(admin.ModelAdmin):
     list_display = ('employee_id', 'employee_name', 'employee_surname', 'branch_id')
     pass
 
+@admin.register(Movimientos)
+class MovimientosAdmin(admin.ModelAdmin):
+    list_display = ('movimiento_id', 'cuenta_remitente_id', 'cuenta_destinatario_id', 'monto')
+    pass
 
 
 @admin.register(Prestamo)
@@ -65,3 +65,12 @@ class SucursalAdmin(admin.ModelAdmin):
     list_display = ('branch_id', 'branch_name')
     pass
 
+@admin.register(TipoCliente)
+class TipoClienteAdmin(admin.ModelAdmin):
+    list_display = ['tipo_cliente']
+    pass
+
+@admin.register(TipoCuenta)
+class TipoCuentaAdmin(admin.ModelAdmin):
+    list_display = ['tipo_cuenta']
+    pass
