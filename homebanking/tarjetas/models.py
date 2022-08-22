@@ -9,7 +9,7 @@ class Cards(models.Model):
     
     card_id = models.AutoField(primary_key=True, verbose_name="ID Tarjeta")
     
-    account_id = models.ForeignKey(Cuenta, null=True, blank=True,
+    account = models.ForeignKey(Cuenta, null=True, blank=True,
                                     on_delete=models.CASCADE, to_field="account_id", verbose_name="ID Cuenta")
     
     numero_tarjeta = models.IntegerField(verbose_name = "Numero de Tarjeta")  # This field type is a guess.
