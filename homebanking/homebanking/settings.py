@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'login',
     'tarjetas',
     'movimiento',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
