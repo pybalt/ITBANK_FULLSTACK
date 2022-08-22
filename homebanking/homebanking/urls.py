@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from webitbank import views
-from prestamos.views import prestamosDetails
 
 
 urlpatterns = [

@@ -34,11 +34,7 @@ class PrestamosSerializer(serializers.ModelSerializer):
 class SucursalesSerializer(serializers.ModelSerializer):
     "Listado de todas las sucursales"
     #! Traerse todas las sucursales
-    sucursales = serializers.PrimaryKeyRelatedField(many = True,
-                                                    queryset = Sucursal.objects.all())
     
     class Meta:
         model = Sucursal
-        fields = ['branch_id', 'branch_number',
-                    'branch_name', 'branch_address']
-    pass
+        fields = "__all__"
