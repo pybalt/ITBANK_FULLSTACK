@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'cuentas',
     'login',
     'tarjetas',
-    'rest_framework',
+    'movimiento',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'login'
 
-#AUTH_USER_MODEL = 'webitbank.Usuario'
+
 
 '''
 Aviso:

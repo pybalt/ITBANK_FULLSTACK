@@ -3,17 +3,11 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import SolicitudPrestamoForm
 from .models import Prestamo
-from clientes.models import Cliente,Tipocliente 
+from clientes.models import Cliente
 from cuentas.models import Cuenta
 from tarjetas.models import Cards
-from login.models import WebitbankUsuario 
-from webitbank.models import Usuario
-from prestamos.models import Prestamo
-from prestamos.serializers import prestamosSerializer
-from django.http import Http404
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
+
+
 
 def chequearUsuarioFormulario(nombreUsuario, apellidoUsuario, dniUsuario, 
 nombreFormulario, apellidoFormulario, dniFormulario):
@@ -29,7 +23,7 @@ def chequearMonto(monto,tipo_Cliente):
         return True
     return False
 
-def prestamos(request):
+"""def prestamos(request):
     form_prestamo = SolicitudPrestamoForm
     if request.method == "POST":
         form_prestamo=SolicitudPrestamoForm(data=request.POST)
@@ -37,7 +31,7 @@ def prestamos(request):
             #Extraer Datos de Usuario
             nameUser = request.user.first_name
             surnameUser = request.user.last_name
-            dniUser = Cliente.objects.get(customer_id=WebitbankUsuario.objects.get(user=request.user.id).customer_dni_id).customer_dni
+            dniUser = Cliente.objects.get(customer_id=Usuario.objects.get(user=request.user.id).customer_dni_id).customer_dni
             #Datos a comparar sacados del Formulario
             nameRecived = request.POST.get('name','')
             surnameRecived = request.POST.get('surname','')
@@ -51,7 +45,7 @@ def prestamos(request):
             nameRecived,surnameRecived,dniRecived):
                 print('Coinciden datos de usuario con los de cliente')      
                 customer_idRecived = Cliente.objects.filter(customer_name=nameRecived).filter(customer_surname=surnameRecived).get(customer_dni= dniRecived).customer_id
-                tipoDeCliente =Tipocliente.objects.get(tipo_clienteid = Cards.objects.get(customer_id = customer_idRecived).tipo_clienteid).tipo_cliente
+                tipoDeCliente =TipoCliente.objects.get(tipo_clienteid = Cards.objects.get(customer_id = customer_idRecived).tipo_clienteid).tipo_cliente
                 #Comprobación Monto dentro del límite
                 if chequearMonto(loan_totalRecived, tipoDeCliente):
                     #Se cargan los datos a la tabla de prestamos
@@ -75,21 +69,4 @@ def prestamos(request):
     return render(request, "webitbank/pages/prestamos.html",
     {'form':form_prestamo})
 # Create your views here.
-
-
-#Delete prestamos API
-
-class prestamosDetails(APIView):
-    def get(self, request, pk):
-        prestamos = Prestamo.objects.filter(pk=pk).first()
-        serializer = prestamosSerializer(prestamos)
-        if prestamos:
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
-    def delete(self, request, pk):#borra un libro con un id determinado
-        prestamos = Prestamo.objects.filter(pk=pk).first()
-        if prestamos:
-            serializer = prestamosSerializer(prestamos)
-            prestamos.delete()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(status=status.HTTP_404_NOT_FOUND)
+"""
