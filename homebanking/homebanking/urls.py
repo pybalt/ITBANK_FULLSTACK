@@ -33,5 +33,5 @@ urlpatterns = [
     path('transferencias/',     views.transferencias,                       name="transferencias"),
     path('turnos/',             views.turnos,                               name="turnos"),
     path('accounts/',           include('django.contrib.auth.urls')),
-    path('api/prestamos/<int:pk>/', prestamosDetails.as_view())
+    path('api/', include('API.urls'))
 ]
