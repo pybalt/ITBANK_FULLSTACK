@@ -1,67 +1,62 @@
 from re import L
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.models import User
-from webitbank.models import (Usuario, Cards, Cliente,
-                              Cuenta,
-                              Empleado, Prestamo, Sucursal)
-
-
-class UsuarioInline(admin.StackedInline):
-    model = Usuario
-    can_delete = False
-    verbose_name_plural = 'usuario'
-
-class UserAdmin(BaseUserAdmin):
-    inlines = (UsuarioInline,)
-
-admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
+from tarjetas.models import Cards
+from clientes.models import Cliente
+from cuentas.models import Cuenta
+from prestamos.models import Prestamo
+from webitbank.models import (Empleado, Sucursal, Direcciones)
+from movimiento.models import Movimientos
 
 
 @admin.register(Cards)
 class CardsAdmin(admin.ModelAdmin):
-    search_fields = ['marca_tarjetaid']
-    list_display = ('numero_tarjeta', 'marca_tarjetaid')
+    list_display = ['card_id', 'numero_tarjeta', 'marca_tarjeta']
     pass
 
 
 
 @admin.register(Cliente)    
 class ClienteAdmin(admin.ModelAdmin):
-    search_fields = ['branch_id']
-    list_display = ('customer_name', 'customer_surname', 'branch_id')
+    list_display = ['customer_id', 'customer_name', 
+                    'customer_surname']
     pass
 
 
 
 @admin.register(Cuenta)
 class CuentaAdmin(admin.ModelAdmin):
-    search_fields = ['account_id']
-    list_display = ('account_id', 'customer_id')
+    list_display = ['account_id', 'tipo_cuenta']
+    pass
+
+
+@admin.register(Direcciones)
+class DireccionesAdmin(admin.ModelAdmin):
+    list_display = ['calle', 'ciudad', 'provincia', 'pais']
     pass
 
 
 
 @admin.register(Empleado)
 class EmpleadoAdmin(admin.ModelAdmin):
-    search_fields = ['branch_id']
-    list_display = ('employee_id', 'employee_name', 'employee_surname', 'branch_id')
+    list_display = ['employee_id', 'employee_name', 
+                    'employee_surname', 'branch_id']
     pass
 
+@admin.register(Movimientos)
+class MovimientosAdmin(admin.ModelAdmin):
+    list_display = ['movimiento_id', 'monto', 'fecha']
+    pass
 
 
 @admin.register(Prestamo)
 class PrestamoAdmin(admin.ModelAdmin):
-    search_fields = ['customer_id']
-    list_display = ('loan_id', 'customer_id')
+    list_display = ['loan_id', 'loan_type', 'loan_date', 'account_id']
     pass
 
 
 
 @admin.register(Sucursal)
 class SucursalAdmin(admin.ModelAdmin):
-    search_fields = ['branch_id']
-    list_display = ('branch_id', 'branch_name')
+    list_display = ['branch_id', 'branch_name', 'branch_number']
     pass
 

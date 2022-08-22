@@ -1,17 +1,29 @@
 from django.db import models
-
+from cuentas.models import Cuenta
+from .choices import marca_tarjeta as marcas
 # Create your models here.
+"""22/08/22 REVISADO"""
+
 
 class Cards(models.Model):
-    customer_id = models.AutoField(primary_key=True)
-    numero_tarjeta = models.TextField()  # This field type is a guess.
-    cvv = models.TextField()  # This field type is a guess.
-    fecha_otorgamiento = models.TextField()  # This field type is a guess.
-    fecha_expiracion = models.TextField()  # This field type is a guess.
-    marca_tarjetaid = models.TextField(db_column='marca_tarjetaId')  # Field name made lowercase. This field type is a guess.
-    tipo_clienteid = models.TextField(db_column='tipo_clienteId')  # Field name made lowercase. This field type is a guess.
-    tipo_cuentaid = models.TextField(db_column='tipo_cuentaId')  # Field name made lowercase. This field type is a guess.
-
+    
+    card_id = models.AutoField(primary_key=True, verbose_name="ID Tarjeta")
+    
+    account = models.ForeignKey(Cuenta, null=True, blank=True,
+                                    on_delete=models.CASCADE, to_field="account_id", verbose_name="ID Cuenta")
+    
+    numero_tarjeta = models.IntegerField(verbose_name = "Numero de Tarjeta")  # This field type is a guess.
+    
+    cvv = models.IntegerField(verbose_name = "CVV")  # This field type is a guess.
+    
+    fecha_otorgamiento = models.DateField(verbose_name = "Fecha de otorgamiento", auto_now_add=True)  # This field type is a guess.
+    
+    fecha_expiracion = models.DateField(verbose_name = "Fecha de expiracion")  # This field type is a guess.
+    
+    marca_tarjeta = models.CharField(max_length=25, choices = marcas, verbose_name = "Tarjeta")  # Field name made lowercase. This field type is a guess.
+    
     class Meta:
-        managed = False
+        managed = True
         db_table = 'cards'
+        verbose_name = 'Tarjeta'
+        verbose_name_plural = 'Tarjetas'

@@ -8,8 +8,8 @@ class SolicitudPrestamoForm(forms.Form):
     loan_type = forms.ChoiceField(label = 'Tipo de Préstamo', required=True, 
     choices= [
         ('', 'Seleccione una opción'),
-        ('HIPOTECARIO', 'Hipotecario'),
-        ('PERSONAL', 'Personal'),
-        ('PRENDARIO', 'Prendario'),
+        ('HIPOTECARIO', 'HIPOTECARIO'),
+        ('PERSONAL', 'PERSONAL'),
+        ('PRENDARIO', 'PRENDARIO'),
         ])
     amount = forms.IntegerField(label = 'Monto del Préstamo', required=True) 
