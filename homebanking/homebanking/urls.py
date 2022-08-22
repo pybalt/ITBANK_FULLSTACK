@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from webitbank import views
+from prestamos.views import prestamosDetails
 
 
 urlpatterns = [
@@ -31,5 +32,6 @@ urlpatterns = [
     path('sucursales/',         views.sucursales,                              name="sucursales"),
     path('transferencias/',     views.transferencias,                       name="transferencias"),
     path('turnos/',             views.turnos,                               name="turnos"),
-    path('accounts/',           include('django.contrib.auth.urls'))
+    path('accounts/',           include('django.contrib.auth.urls')),
+    path('api/prestamos/<int:pk>/', prestamosDetails.as_view())
 ]

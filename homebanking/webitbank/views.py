@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
-import requests
+#import requests
 
 def login(request):
     return render(request, "registration/login.html")

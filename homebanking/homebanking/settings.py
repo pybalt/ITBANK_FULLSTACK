@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cuentas',
     'login',
     'tarjetas',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

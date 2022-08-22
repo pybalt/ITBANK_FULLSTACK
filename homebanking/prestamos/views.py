@@ -8,6 +8,12 @@ from cuentas.models import Cuenta
 from tarjetas.models import Cards
 from login.models import WebitbankUsuario 
 from webitbank.models import Usuario
+from prestamos.models import Prestamo
+from prestamos.serializers import prestamosSerializer
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 def chequearUsuarioFormulario(nombreUsuario, apellidoUsuario, dniUsuario, 
 nombreFormulario, apellidoFormulario, dniFormulario):
@@ -69,3 +75,21 @@ def prestamos(request):
     return render(request, "webitbank/pages/prestamos.html",
     {'form':form_prestamo})
 # Create your views here.
+
+
+#Delete prestamos API
+
+class prestamosDetails(APIView):
+    def get(self, request, pk):
+        prestamos = Prestamo.objects.filter(pk=pk).first()
+        serializer = prestamosSerializer(prestamos)
+        if prestamos:
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+    def delete(self, request, pk):#borra un libro con un id determinado
+        prestamos = Prestamo.objects.filter(pk=pk).first()
+        if prestamos:
+            serializer = prestamosSerializer(prestamos)
+            prestamos.delete()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_404_NOT_FOUND)
