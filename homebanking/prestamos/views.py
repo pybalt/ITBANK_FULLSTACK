@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import SolicitudPrestamoForm
 from .models import Prestamo
-from clientes.models import Cliente,TipoCliente 
+from clientes.models import Cliente
 from cuentas.models import Cuenta
 from tarjetas.models import Cards
 

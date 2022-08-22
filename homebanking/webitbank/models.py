@@ -1,15 +1,15 @@
 from pyexpat import model
 from django.db import models
 
-
+"""22/08/22 Revisado"""
 class Direcciones(models.Model):
     
     direccion_id = models.AutoField(primary_key=True, unique=True, verbose_name='ID Direccion')
-    calle = models.CharField(max_length = 255, blank=True, null=True, verbose_name = '')
-    numero = models.IntegerField(blank=True, null=True, verbose_name = '')
-    ciudad = models.CharField(max_length = 255, blank=True, null=True, verbose_name = '')
-    pais = models.CharField(max_length = 255, blank=True, null=True, verbose_name = '')
-    provincia = models.CharField(max_length = 255, blank=True, null=True, verbose_name = '')
+    calle = models.CharField(max_length = 50, blank=True, null=True, verbose_name = 'Calle')
+    numero = models.IntegerField(blank=True, null=True, verbose_name = 'Numero')
+    ciudad = models.CharField(max_length = 50, blank=True, null=True, verbose_name = 'Ciudad')
+    pais = models.CharField(max_length = 50, blank=True, null=True, verbose_name = 'Pais')
+    provincia = models.CharField(max_length = 50, blank=True, null=True, verbose_name = 'Provincia')
 
     class Meta:
         managed = True
@@ -23,11 +23,10 @@ class Direcciones(models.Model):
 
 class Sucursal(models.Model):
 
-    branch_id = models.AutoField(primary_key=True, unique=True, verbose_name = '')
-    branch_number = models.IntegerField(verbose_name = '')
-    branch_name = models.TextField(verbose_name = '')
-    branch_address_id = models.IntegerField(verbose_name = '')
-    direccion_id = models.ForeignKey(Direcciones, on_delete= models.CASCADE, to_field="direccion_id", verbose_name = '')
+    branch_id = models.AutoField(primary_key= True, unique=True, verbose_name = 'ID Sucursal')
+    branch_number = models.IntegerField(verbose_name = 'Numero de Sucursal')
+    branch_name = models.CharField(max_length = 50, verbose_name = 'Nombre de Sucursal')
+    branch_address = models.OneToOneField(Direcciones, on_delete= models.CASCADE, to_field="direccion_id", verbose_name = 'Direccion')
     class Meta:
         managed = True
         db_table = 'sucursal'
@@ -39,13 +38,13 @@ class Sucursal(models.Model):
 
 class Empleado(models.Model):
 
-    employee_id = models.AutoField(primary_key=True, verbose_name = '')
-    employee_name = models.TextField(verbose_name = '')
-    employee_surname = models.TextField(verbose_name = '')
-    employee_hire_date = models.DateField(verbose_name = '')
-    employee_dni = models.IntegerField(verbose_name = '')  # Field name made lowercase.
-    branch_id = models.ForeignKey(Sucursal, on_delete= models.CASCADE, to_field="branch_id", verbose_name = '')
-    direccion_id = models.ForeignKey(Direcciones, on_delete= models.CASCADE, to_field="direccion_id", verbose_name = '')
+    employee_id = models.AutoField(primary_key=True, verbose_name = 'ID Empleado')
+    employee_name = models.CharField(max_length= 50, verbose_name = 'Nombre')
+    employee_surname = models.CharField(max_length= 50, verbose_name = 'Apellido')
+    employee_hire_date = models.DateField(verbose_name = 'Fecha de contratacion')
+    employee_dni = models.IntegerField(verbose_name = 'DNI')
+    branch = models.ForeignKey(Sucursal, on_delete= models.CASCADE, to_field="branch_id", verbose_name = 'Sucursal ID')
+    direccion = models.ForeignKey(Direcciones, on_delete= models.CASCADE, to_field="direccion_id", verbose_name = 'Direccion ID')
 
     class Meta:
         managed = True
