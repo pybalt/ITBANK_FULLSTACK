@@ -3,3 +3,9 @@ tipo_prestamo = (
     ('PER', 'PERSONAL'),
     ('PRE', 'PRENDARIO'),
 )
+
+estado_prestamo = (
+    ('PDT', 'PENDIENTE'),
+    ('APB', 'APROBADO'),
+    ('RZD', 'RECHAZADO'),
+)

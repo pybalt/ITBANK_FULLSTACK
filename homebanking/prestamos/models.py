@@ -1,7 +1,7 @@
 from django.db import models
 from clientes.models import Cliente
 from cuentas.models import Cuenta
-from .choices import tipo_prestamo
+from .choices import tipo_prestamo, estado_prestamo
 # Create your models here.
 """22/08/22"""
 
@@ -14,9 +14,11 @@ class Prestamo(models.Model):
     loan_total = models.IntegerField(verbose_name = "Monto")
     account = models.ForeignKey(Cuenta, on_delete=models.CASCADE, null=False,
                                 blank=False, verbose_name = "ID Cuenta")
+    estado = models.CharField(choices = estado_prestamo, max_length=15, verbose_name= "Estado del prestamo")
     
     class Meta:
         managed = True
         db_table = 'prestamo'
         verbose_name = 'Prestamo'
         verbose_name_plural = 'Prestamos'
+        
