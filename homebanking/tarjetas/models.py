@@ -1,6 +1,7 @@
 from django.db import models
 from cuentas.models import Cuenta
 from .choices import marca_tarjeta as marcas
+from .choices import tipo
 # Create your models here.
 """22/08/22 REVISADO"""
 
@@ -19,6 +20,8 @@ class Cards(models.Model):
     fecha_otorgamiento = models.DateField(verbose_name = "Fecha de otorgamiento", auto_now_add=True)  # This field type is a guess.
     
     fecha_expiracion = models.DateField(verbose_name = "Fecha de expiracion")  # This field type is a guess.
+    
+    tipo = models.CharField(max_length=12, choices = tipo, verbose_name= "Tipo de Tarjeta")
     
     marca_tarjeta = models.CharField(max_length=25, choices = marcas, verbose_name = "Tarjeta")  # Field name made lowercase. This field type is a guess.
     

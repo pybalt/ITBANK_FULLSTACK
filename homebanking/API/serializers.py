@@ -1,34 +1,26 @@
+from datetime import date
+from webitbank.models import Sucursal
+from prestamos.models import Prestamo
+from cuentas.models import Cuenta
+from webitbank.models import Direcciones
 from rest_framework import serializers
+from clientes.models import Cliente
 """Obtener tarjetas asociadas a un cliente❌ LECTURA!"""
 from tarjetas.models import Cards
 """Modificar direccion de un cliente"""
-from webitbank.models import Direcciones
-from cuentas.models import Cuenta
 """Anular solicitud de prestamo de un cliente"""
-from prestamos.models import Prestamo
 """Listado de todas las sucursales❌ LECTURA!"""
-from webitbank.models import Sucursal
+
 
 class TarjetasSerializer(serializers.ModelSerializer):
-    "Obtener tarjetas asociadas a un cliente"
-    #! Traerse un cliente
-    #! Traerse las cuentas del cliente
-    #! Buscar las tarjetas asociadas a las cuentas del cliente
-    
-    #* Esto ya funciona!!
+
     class Meta:
         model = Cards
         fields = "__all__"
-        read_only_fields = ("__all__", )
 
-    pass
 
 class DireccionSerializer(serializers.ModelSerializer):
-    "Modificar direccion de un cliente"
-    #! Traerse un cliente
-    #! Traerse las direcciones que coincidan con el campo de cliente
-    
-    #* Esto ya funciona!!
+
     class Meta:
         model = Direcciones
         fields = "__all__"
@@ -36,23 +28,57 @@ class DireccionSerializer(serializers.ModelSerializer):
 
 
 class PrestamosSerializer(serializers.ModelSerializer):
-    "Anular la solicitud de prestamo de un cliente"
-    #! Traerse un cliente
-    #! Buscar los prestamos que haya hecho ese cliente
-    #? ¿Como sabes cual es la solicitud de prestamo de un cliente?
-    #! Eliminar el ultimo prestamo que haya hecho
+
+    class Meta:
+        model = Prestamo
+        fields = "__all__"
+
+class BorrarPrestamoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prestamo
+        fields = "__all__"
+        read_only_fields = ("loan_id",  "loan_type", "loan_date", "loan_total", "account", "estado")
+
+
+class NuevoPrestamoSerializer(serializers.ModelSerializer):
+
     
-    # ...
+    loan_date = serializers.ReadOnlyField()
+    estado = serializers.ReadOnlyField()
+
+    class Meta:
+        model = Prestamo
+        fields = "__all__"
+        read_only_fields = ('loan_date', 'estado')
+
+
+class SucursalesSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Sucursal
         fields = "__all__"
 
-class SucursalesSerializer(serializers.ModelSerializer):
-    "Listado de todas las sucursales"
-    #! Traerse todas las sucursales
-    
-    #* Esto ya funciona!
+
+class ClienteSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = Sucursal
+
+        model = Cliente
         fields = "__all__"
-        read_only_fields = ("__all__", )
+
+
+class SaldoCuentasSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Cuenta
+        fields = ("account_id", "tipo_cuenta", "balance")
+
+class Prestamos_TipoTotal(serializers.ModelSerializer):
+    
+    class Meta:
+        
+        model = Prestamo
+        
+        fields = ("loan_id", "loan_type", "loan_total")
+        
+        
