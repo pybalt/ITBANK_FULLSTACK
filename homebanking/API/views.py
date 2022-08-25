@@ -151,7 +151,7 @@ class EMPLEADO_TarjetasDelCliente(APIView):
     @auth([EMPLEADO, ])
     def get(self, request, pk):
         
-        queryset = Cards.objects.filter(account_id__pk = pk)
+        queryset = Cards.objects.filter(account_id__pk = pk).filter(tipo = "CRED")
         serializer = TarjetasSerializer(queryset, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)

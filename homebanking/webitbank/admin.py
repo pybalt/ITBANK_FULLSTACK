@@ -10,7 +10,7 @@ from movimiento.models import Movimientos
 
 @admin.register(Cards)
 class CardsAdmin(admin.ModelAdmin):
-    list_display = ['card_id', 'numero_tarjeta', 'marca_tarjeta']
+    list_display = ['card_id', 'account', 'numero_tarjeta', 'tipo', 'marca_tarjeta']
     pass
 
 
@@ -25,7 +25,7 @@ class ClienteAdmin(admin.ModelAdmin):
 
 @admin.register(Cuenta)
 class CuentaAdmin(admin.ModelAdmin):
-    list_display = ['account_id', 'tipo_cuenta']
+    list_display = ['account_id', 'tipo_cuenta', 'customer']
     pass
 
 
