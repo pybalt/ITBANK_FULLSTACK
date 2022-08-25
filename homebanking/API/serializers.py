@@ -37,13 +37,14 @@ class PrestamosSerializer(serializers.ModelSerializer):
 
 class NuevoPrestamoSerializer(serializers.ModelSerializer):
 
-    loan_date = serializers.ReadOnlyField(source=str(date.today()))
-    print(loan_date)
+    
+    loan_date = serializers.ReadOnlyField()
+    estado = serializers.ReadOnlyField()
 
     class Meta:
         model = Prestamo
         fields = "__all__"
-        read_only_fields = ('loan_date', )
+        read_only_fields = ('loan_date', 'estado')
 
 
 class SucursalesSerializer(serializers.ModelSerializer):
@@ -61,20 +62,18 @@ class ClienteSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class CuentaSerializer(serializers.ModelSerializer):
-
-    def get_fields(self):
-        fields = super().get_fields()
-        for field in fields.values():
-            field.read_only = True
-
-        return fields
+class SaldoCuentasSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cuenta
-        fields = "__all__"
-        read_only_fields = ("account_id",
-                            "customer",
-                            "balance",
-                            "tipo_cuenta",
-                            "iban",)
+        fields = ("account_id", "tipo_cuenta", "balance")
+
+class Prestamos_TipoTotal(serializers.ModelSerializer):
+    
+    class Meta:
+        
+        model = Prestamo
+        
+        fields = ("loan_id", "loan_type", "loan_total")
+        
+        
