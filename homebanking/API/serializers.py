@@ -34,6 +34,12 @@ class PrestamosSerializer(serializers.ModelSerializer):
         model = Prestamo
         fields = "__all__"
 
+class BorrarPrestamoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prestamo
+        fields = "__all__"
+        read_only_fields = ("loan_id",  "loan_type", "loan_date", "loan_total", "account", "estado")
+
 
 class NuevoPrestamoSerializer(serializers.ModelSerializer):
 
