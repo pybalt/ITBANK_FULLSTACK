@@ -26,11 +26,12 @@ urlpatterns = [
     path('productos/',          views.productos,                            name="productos"),
     path('dolar/',              views.dolar,                                name="dolar"),
     path('noticias/',           views.noticias,                             name="noticias"),
-    #path('prestamos/',         views.prestamos,                            name="prestamos"),
+    path('prestamos/',         views.prestamos,                             name="prestamos"),
     path('prestamos/',          include('prestamos.urls')),
-    path('sucursales/',         views.sucursales,                              name="sucursales"),
+    path('sucursales/',         views.sucursales,                           name="sucursales"),
     path('transferencias/',     views.transferencias,                       name="transferencias"),
     path('turnos/',             views.turnos,                               name="turnos"),
     path('accounts/',           include('django.contrib.auth.urls')),
-    path('api/', include('API.urls'))
+    path('api/', include('API.urls')),
+    path('preguntasFrecuentes/',     views.preguntasFrecuentes,            name="preguntasFrecuentes"),
 ]

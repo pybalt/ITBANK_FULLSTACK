@@ -38,7 +38,7 @@ class UI {
   imprimirAlerta(mensaje, tipo) {
     //Crear div
     const divMensaje = document.createElement("div");
-    divMensaje.classList.add("text-center", "alert", "d-block", "col-12");
+    divMensaje.classList.add("conteinerTurnoSacado");
 
     if (tipo === "error") {
       divMensaje.classList.add("alert-danger");
@@ -68,13 +68,13 @@ class UI {
         turno;
 
       const divTurno = document.createElement("div");
-      divTurno.classList.add("turno", "p-3");
+      divTurno.classList.add("turno");
       divTurno.dataset.id = id;
 
       //Scripting de cada elemento
 
       const NombreParrafo = document.createElement("h2");
-      NombreParrafo.classList.add("card-title", "font-weight-bolder");
+      NombreParrafo.classList.add("card-title");
       NombreParrafo.textContent = nombre;
 
       const apellidoParrafo = document.createElement("p");
@@ -105,7 +105,7 @@ class UI {
       //Boton para eliminar el turno
 
       const botonEliminar = document.createElement("button");
-      botonEliminar.classList.add("btn", "btn-danger", "mr-2");
+      botonEliminar.classList.add("btn");
       botonEliminar.innerHTML = "Cancelar turno";
 
       botonEliminar.onclick = () => eliminarTurno(id);
@@ -113,7 +113,7 @@ class UI {
       //Boton  para editar
 
       const botonEditar = document.createElement("button");
-      botonEditar.classList.add("boton-editar");
+      botonEditar.classList.add("btn");
       botonEditar.innerHTML = "Editar";
       botonEditar.onclick = () => cargarEdicion(turno);
 

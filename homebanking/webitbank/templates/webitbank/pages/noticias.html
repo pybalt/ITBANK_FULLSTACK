@@ -4,22 +4,30 @@
 
 
 {% block content %}
-          <div class="container m-0 p-0 pb-3">
-            <h2 class="text-align text-center text-info p-3 pb-0">Noticias</h2>
+          
+            <h2 class="text">Noticias</h2>
+            <hr>
+            <div class="conteiner">
+            <div class="row justify-content-md-center noticias">
             {% for title, desc, i, url in mylist %}
               <!--Título-->
-              <hr>
               <!--Tarjeta-->
-                <div class="card">
-                  <img src="{{ i }}" class="card-img-top" alt="">
+                <div class="card col-5">
+                  <div class="conteinerImgNoticia">
+                  <img src="{{ i }}" class="card-img" alt="">
+                </div>
                   <div class="card-body">
                     <a href="{{ url }}" target = "_blank">
                       <h5 class="card-title">{{ title }}</h5>
                     </a>
                     <p class="card-text">{{ desc }}</p>
                   </div>
+                  <a href="{{ url }}" target = "_blank" ><button class="btn">Ver mas</button></a>
                 </div>
+              
+              
                 {% endfor %}
+              </div>
             </div>
       <!-- Finalizan las tabs -->
   <!--  pie de página principal -->
