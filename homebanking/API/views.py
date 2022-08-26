@@ -248,9 +248,9 @@ class ModificarDireccionCliente(APIView):
     @auth([EMPLEADO, CLIENTE])
     def put(self, request, id):
         if is_member(request.user, CLIENTE):
-            queryset = Cliente.objects.get(customer_id=request.user.id).direccion
+            queryset = Cliente.objects.get(user_id = request.user.id).direccion
         else:
-            queryset = Cliente.objects.get(customer_id=id).direccion
+            queryset = Cliente.objects.get(user_id = id).direccion
             
         serializer = DireccionSerializer(queryset, data=request.data)
 
