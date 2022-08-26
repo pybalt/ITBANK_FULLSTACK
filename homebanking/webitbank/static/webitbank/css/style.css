@@ -21,6 +21,9 @@ a{
 .navbar{
     background-image: linear-gradient(to right,rgb(0, 141, 235), rgb(23, 228, 243), rgb(0, 141, 235));
 }
+.dark  .navbar-toggler  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
 
 .dark .navbar{
     background-image: linear-gradient(to right,rgb(0, 0, 0), rgb(23, 228, 243), rgb(0, 0, 0));
@@ -354,6 +357,7 @@ footer {
     font-weight: 500;
     
 }
+
 /* css para pago de servicios */
 .conteinerDivServicios{
     display: flex;
@@ -708,9 +712,27 @@ label{
     font-size: 15px;
 }
 
-
+/* turnos */
+.solicita{
+    display: none;
 }
-
+#nueva-cita{
+    margin: 0 auto;
+}
+.datosIngresar .form-control{
+    width: 200px;
+}
+.btnTurno{
+    width: 200px;
+}
 /* modo ascuro */
 
-
+}
+@media(max-width:1020px){
+    .solicita{
+        display: none;
+    }
+    #nueva-cita{
+        margin: 0 auto;
+    }
+}

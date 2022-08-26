@@ -59,4 +59,6 @@ def sucursales(request):
 
 @login_required
 def preguntasFrecuentes(request):
-    return render(request, "webitbank/pages/preguntasFrecuentes.html") 
+    return render(request, "webitbank/pages/preguntasFrecuentes.html")
+
+
