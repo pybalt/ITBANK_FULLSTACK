@@ -22,37 +22,7 @@ PRESTAMO = "PR"
 REVERTIR_PRESTAMO = "PR_REVERT"
 
 "DECORADOR DE AUTENTICACION"
-class auth(object):
-    
-    def __init__(self, ROL) -> None:
-        "El array ROL debe de ser al menos un subconjunto de [CLIENTE, EMPLEADO, GERENTE]"
-        if not(all(x in [CLIENTE, EMPLEADO, GERENTE] for x in ROL)):
-            raise AttributeError("El ROL no fue asignado.") #! De no ser asi, se generara un error para 
-                                                                #! Controlar mejor el codigo
-        
-        self.ROL = ROL
-        
-    def __call__(self, original_func, *args):
-        "Metodo a ser llamado para decorar la instancia"
-        ROL = self.ROL
-        
-        def wrapper(self, request, *args, **kwargs):
-            for i in range(0, len(ROL)):
-                "Implementado como un loop dado que aumenta la escalabilidad de este constructor"
-                "Pudiendo admitir varios grupos como posibles candidatos"
-                if User.objects.filter(pk = request.user.id, groups__name = ROL[i]).exists():
-                    "Verifica que el usuario pertenezca al grupo del rol que asignamos"
-                    return original_func(self, request, *args, **kwargs)
-            return Response(status = status.HTTP_401_UNAUTHORIZED)
-                
-        
-        return wrapper
-        
-    def __get__(self, instance):
-        "Metodo para hacer funcionar el decorador con las intancias de clase"
-        if instance is None:
-            return self
-        return MethodType(self, instance)
+from .custom_permissions import *
 
 
 def solicitud_prestamo(tipo_movimiento, cuenta, prestamo):
@@ -100,7 +70,8 @@ def is_member(user, ROL):
 
 class CLIENTE_MisDatos(APIView):
     
-    @auth([CLIENTE, ])
+    permission_classes = [AuthenticatedClient]
+    
     def get(self, request):        
 
         current_user = request.user
@@ -110,7 +81,8 @@ class CLIENTE_MisDatos(APIView):
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
 class CLIENTE_SaldoCuentas(APIView):
-    @auth([CLIENTE, ])
+    permission_classes = [AuthenticatedClient]
+    
     def get(self, request):
 
         cliente = Cliente.objects.get(user = request.user)
@@ -121,8 +93,8 @@ class CLIENTE_SaldoCuentas(APIView):
 
     
 class CLIENTE_Prestamos(APIView):
+    permission_classes = [AuthenticatedClient]    
     
-    @auth([CLIENTE, ])    
     def get(self, request):
 
         cliente = Cliente.objects.get(user = request.user)
@@ -134,7 +106,7 @@ class CLIENTE_Prestamos(APIView):
     
 class EMPLEADO_PrestamosPorSucursal(APIView):
     
-    @auth([EMPLEADO, ])    
+    permission_classes = [AuthenticatedEmployee]  
     def get(self, request, pk):
 
         sucursal = Sucursal.objects.get(pk = pk)  
@@ -147,8 +119,8 @@ class EMPLEADO_PrestamosPorSucursal(APIView):
             
 
 class EMPLEADO_TarjetasDelCliente(APIView):
+    permission_classes = [AuthenticatedEmployee]  
     
-    @auth([EMPLEADO, ])
     def get(self, request, pk):
         
         queryset = Cards.objects.filter(account_id__pk = pk).filter(tipo = "CRED")
@@ -160,8 +132,8 @@ class EMPLEADO_TarjetasDelCliente(APIView):
 
 
 class EMPLEADO_GenerarSolicitudDePrestamo(APIView):
+    permission_classes = [AuthenticatedEmployee]  
     
-    @auth([EMPLEADO, ])
     def post(self, request):
         try:
             if not Cuenta.objects.filter(pk = request.data['account']).exists():
@@ -188,7 +160,7 @@ class EMPLEADO_GenerarSolicitudDePrestamo(APIView):
 
 
 class EMPLEADO_AnularSolicitudDePrestamo(APIView):
-    @auth([EMPLEADO, ])
+    permission_classes = [AuthenticatedEmployee]  
     def get(self, request, id):
         
         try:
@@ -200,7 +172,7 @@ class EMPLEADO_AnularSolicitudDePrestamo(APIView):
         except queryset.DoesNotExist:
             return Response(status = status.HTTP_404_NOT_FOUND)
 
-    @auth([EMPLEADO, ])
+
     def delete(self, request, id):
         try:
             prestamo = Prestamo.objects.get(loan_id = id)
@@ -237,7 +209,7 @@ class EMPLEADO_AnularSolicitudDePrestamo(APIView):
 
 
 class ModificarDireccionCliente(APIView):
-    @auth([EMPLEADO, CLIENTE])
+    permission_classes = [AuthenticatedEmployee|AuthenticatedClient]
     def get(self, request, id):
         
         queryset = Cliente.objects.get(customer_id=id).direccion
@@ -245,12 +217,12 @@ class ModificarDireccionCliente(APIView):
 
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-    @auth([EMPLEADO, CLIENTE])
+
     def put(self, request, id):
         if is_member(request.user, CLIENTE):
-            queryset = Cliente.objects.get(customer_id=request.user.id).direccion
+            queryset = Cliente.objects.get(user_id = request.user.id).direccion
         else:
-            queryset = Cliente.objects.get(customer_id=id).direccion
+            queryset = Cliente.objects.get(user_id = id).direccion
             
         serializer = DireccionSerializer(queryset, data=request.data)
 

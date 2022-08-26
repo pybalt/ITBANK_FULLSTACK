@@ -3,5 +3,3 @@ tipo_cuentas = (
     ('CAD', 'CAJA DE AHORRO EN DOLARES'),
     ('CC', 'CUENTA CORRIENTE'),
 )
-
-iban = ()
