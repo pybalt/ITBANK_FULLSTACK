@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'prestamos',
     'clientes',
     'cuentas',
-    'login',
+    'registration',
     'tarjetas',
     'movimiento',
     'API',
@@ -131,7 +131,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_URL = '/login/'
-# LOGOUT_URL = ''
-# LOGIN_REDIRECT_URL = 'home'
-# LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'accounts/login'
+LOGOUT_URL = 'accounts/login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login'
