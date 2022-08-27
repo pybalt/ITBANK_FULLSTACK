@@ -21,6 +21,7 @@ from webitbank import views
 urlpatterns = [
     path('admin/',              admin.site.urls),
     path('login/',              views.login,                                name="login"),
+    path('login',               include('django.contrib.auth.urls')),
     path('',                    views.home,                                 name="home"),
     path('pagoServicios/',      views.pagoServicios,                        name="pagoServicios"),
     path('productos/',          views.productos,                            name="productos"),
@@ -28,9 +29,8 @@ urlpatterns = [
     path('noticias/',           views.noticias,                             name="noticias"),
     #path('prestamos/',         views.prestamos,                            name="prestamos"),
     path('prestamos/',          include('prestamos.urls')),
-    path('sucursales/',         views.sucursales,                              name="sucursales"),
+    path('sucursales/',         views.sucursales,                           name="sucursales"),
     path('transferencias/',     views.transferencias,                       name="transferencias"),
     path('turnos/',             views.turnos,                               name="turnos"),
-    path('accounts/',           include('django.contrib.auth.urls')),
     path('api/', include('API.urls'))
 ]

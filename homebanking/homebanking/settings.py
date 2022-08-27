@@ -130,16 +130,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'login'
 
-
-
-'''
-Aviso:
-Esa parte del código está comentada porque solo puede funcionar antes de hacer el primer makemigrations
-Hablé con Nico al respecto, y como para corregir ese comando habría que rehacerse la base de datos, nos permitió dejarlo comentado con un aviso
-Las consignas de la segunda problemática se cumplen, hay una relación 1 a 1 entre usuario y cliente, como se ve reflejado en webitbank.models.Usuario
-pero la autenticación se realiza con los usuarios predeterminados de Django
-Perdón por los inconvenientes
-'''
+LOGIN_URL = '/login/'
+# LOGOUT_URL = ''
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'login'
