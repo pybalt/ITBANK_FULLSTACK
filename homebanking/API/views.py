@@ -1,3 +1,4 @@
+from queue import Empty
 from urllib import request
 from django.db.models import F  # Para actualizar un campo de la base de datos
 from django.contrib.auth.models import User
@@ -93,15 +94,16 @@ class CLIENTE_SaldoCuentas(APIView):
 
     
 class CLIENTE_Prestamos(APIView):
-    permission_classes = [AuthenticatedClient]    
-    
+    permission_classes = [AuthenticatedClient]
+      
     def get(self, request):
-
         cliente = Cliente.objects.get(user = request.user)
         queryset = Prestamo.objects.filter(account__customer = cliente)
         serializer = Prestamos_TipoTotal(queryset, many = True)
-                
+                    
         return Response(serializer.data, status = status.HTTP_202_ACCEPTED)
+      
+
 
     
 class EMPLEADO_PrestamosPorSucursal(APIView):
@@ -124,14 +126,19 @@ class EMPLEADO_PrestamosPorSucursal(APIView):
             
 
 class EMPLEADO_TarjetasDelCliente(APIView):
-    permission_classes = [AuthenticatedEmployee]  
-    
+    permission_classes = [AuthenticatedEmployee]
     def get(self, request, pk):
-        
-        queryset = Cards.objects.filter(account_id__pk = pk).filter(tipo = "CRED")
-        serializer = TarjetasSerializer(queryset, many=True)
+            queryset = Cards.objects.filter(account_id__pk = pk).filter(tipo = "CRED")
+            if not len(queryset)==0:
+                serializer = TarjetasSerializer(queryset, many=True)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                print("No hay tarjetas de creditos para ese cliente")
+                return Response(status = status.HTTP_400_BAD_REQUEST)
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+        
 
 
 
