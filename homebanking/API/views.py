@@ -247,7 +247,7 @@ class ModificarDireccionCliente(APIView):
      
         
 class PUBLICA_SucursalesList(generics.ListAPIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'sucursales.html'
-    queryset = Sucursal.objects.all()
-    serializer_class = SucursalesSerializer
+    def get(self, request): 
+        queryset = Sucursal.objects.all()
+        serializer_class = SucursalesSerializer(queryset,many=True)
+        return Response(serializer_class.data,status=status.HTTP_202_ACCEPTED)
