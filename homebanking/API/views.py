@@ -230,8 +230,12 @@ class ModificarDireccionCliente(APIView):
         if is_member(request.user, CLIENTE):
             queryset = Cliente.objects.get(user_id = request.user.id).direccion
         else:
-            queryset = Cliente.objects.get(user_id = id).direccion
-            
+            try:
+                queryset = Cliente.objects.get(user_id = id).direccion
+            except Cliente.DoesNotExist:
+                print("El cliente no existe")
+                return Response(status = status.HTTP_400_BAD_REQUEST)
+
         serializer = DireccionSerializer(queryset, data=request.data)
 
         if serializer.is_valid():
