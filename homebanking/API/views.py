@@ -126,16 +126,17 @@ class EMPLEADO_PrestamosPorSucursal(APIView):
             
 
 class EMPLEADO_TarjetasDelCliente(APIView):
-    permission_classes = [AuthenticatedEmployee]
-    def get(self, request, pk):
-            queryset = Cards.objects.filter(account_id__pk = pk).filter(tipo = "CRED")
-            if not len(queryset)==0:
-                serializer = TarjetasSerializer(queryset, many=True)
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            else:
-                print("No hay tarjetas de creditos para ese cliente")
-                return Response(status = status.HTTP_400_BAD_REQUEST)
 
+    permission_classes = [AuthenticatedEmployee] 
+    def get(self, request, pk):
+        queryset = Cards.objects.filter(account_id__pk = pk).filter(tipo = "CRED")
+        if not len(queryset)==0:
+            serializer = TarjetasSerializer(queryset, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            print("No hay tarjetas de creditos para ese cliente")
+            return Response(status = status.HTTP_400_BAD_REQUEST)
+        
 
 
         
