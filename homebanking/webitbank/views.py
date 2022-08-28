@@ -1,6 +1,10 @@
+from urllib.request import Request
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
-#import requests
+
+from cuentas.models import Cuenta
+from .models import Sucursal
+import requests
 
 def login(request):
     return render(request, "registration/login.html")
@@ -15,7 +19,8 @@ def pagoServicios(request):
 
 @login_required
 def productos(request):
-    return render(request, "webitbank/pages/productos.html")
+    cuenta_list=Cuenta.objects.all()
+    return render(request, "webitbank/pages/productos.html",{'cuenta_list':cuenta_list})
 
 @login_required
 def dolar(request):
@@ -54,6 +59,11 @@ def turnos(request):
 
 @login_required
 def sucursales(request):
-    return render(request, "webitbank/pages/sucursales.html")
+    sucursal_list=Sucursal.objects.all()
+    return render(request, "webitbank/pages/sucursales.html",{'sucursal_list':sucursal_list})
+
+@login_required
+def preguntasFrecuentes(request):
+    return render(request, "webitbank/pages/preguntasFrecuentes.html")
 
 

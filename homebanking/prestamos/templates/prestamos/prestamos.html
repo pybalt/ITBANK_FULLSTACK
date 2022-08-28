@@ -7,8 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+
+    
+    
     {% if 'ok' in request.GET %}
-    <p><b>Su prestamo ah sido aceptado, el saldo de su cuenta ya fue actualizado</b></p>
+    <p><b>Su prestamo ha sido aceptado, el saldo de su cuenta ya fue actualizado</b></p>
     {% endif %}
     {% if 'notok' in request.GET %}
     <p><b>Alguno de los campos ingresados no es válido</b></p>
@@ -21,6 +24,8 @@
     <p><b>Los datos ingresados en el formulario no coincide con los asociados al usuario logueado. 
         Recuerde que solo puede solicitar el prestamo desde el usuario asociado a la cuenta en la que desea recibir el dinero</b></p>
     {% endif %}
+    
+    
 
     
     <form action="" method="POST">

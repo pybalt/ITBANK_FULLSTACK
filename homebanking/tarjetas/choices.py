@@ -3,3 +3,7 @@ marca_tarjeta = (
     ('MC', 'MASTERCARD'),
     ('AE', 'AMERICAN EXPRESS'),
 )
+tipo = (
+    ('CRED', 'CREDITO'),
+    ('DEB', 'DEBITO'),
+)

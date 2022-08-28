@@ -44,7 +44,11 @@ INSTALLED_APPS = [
     'login',
     'tarjetas',
     'movimiento',
+<<<<<<< HEAD
     'rest_framework',
+=======
+    'API',
+>>>>>>> 3f4664adf341e2ce8b13ac034376447970ebfb3b
 ]
 
 MIDDLEWARE = [

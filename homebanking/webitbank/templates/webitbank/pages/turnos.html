@@ -6,13 +6,16 @@
 
 
 {% block content %}
+<!-- <div class="imgTurno">
+    <img src="{% static 'webitbank/imagenes/turnosweb.webp' %}" alt="">
+</div> -->
           <div class="container2">
             <div class="row">
 
             </div>
           </div>
       <!-- Finalizan las tabs -->
-
+    
     </section>
       <html lang="en">
         <head>
@@ -24,62 +27,102 @@
             <link rel="stylesheet" href="{% static 'webitbank/css/calendar.css' %}">
         </head>
         <body>
-            <h2 class="text-center my-5 titulo">Administrador de Turnos</h2>
-            <div class="container mt-5 p-5">
-                <div id="contenido" class="row">
-                    <div class="col-md-6 agregar-cita">
+
+
+            <div class="conteinerTitulos">
+                <h3>Turnos</h3>
+                  <button class="btnConsultas btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Consultas y Operaciones
+                  </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Mis turnos</a></li>
+                    
+                </ul>
+              </div>
+            <div class="conteinerTurno">
+                <div class="row solicita">
+                <legend>SOLICITA TU TURNO!</legend>
+                <!-- <img src="{% static 'webitbank/imagenes/turnosicono.png' %}" alt="" class="imgTurno"> -->
+                </div>
+                <div id="contenido">
+                    
+                    <div class="agregar-cita">
                         <form id="nueva-cita">
-                            <legend class="mb-4">Datos del solicitante</legend>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-lg-4 col-form-label">Nombre:</label>
-                                <div class="col-sm-8 col-lg-8">
+                            
+                            <div class="datosIngresar">
+                                <label >Nombre:</label>
+                                <div >
                                     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-lg-4 col-form-label">Apellido:</label>
-                                <div class="col-sm-8 col-lg-8">
+                            <div class="datosIngresar">
+                                <label>Apellido:</label>
+                                <div>
                                     <input type="text" id="apellido" name="apellido" class="form-control"  placeholder="Apellido">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-lg-4 col-form-label">Teléfono:</label>
-                                <div class="col-sm-8 col-lg-8">
+                            <div class="datosIngresar">
+                                <label>Teléfono:</label>
+                                <div>
                                     <input type="tel" id="telefono" name="telefono" class="form-control"  placeholder="Número de Teléfono">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-lg-4 col-form-label">Fecha:</label>
-                                <div class="col-sm-8 col-lg-8">
+                            <div class="datosIngresar">
+                                <label class="">Fecha:</label>
+                                <div>
                                     <input type="date" id="fecha" name="fecha" class="form-control">
                                 </div>
                             </div>
         
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-lg-4 col-form-label">Hora:</label>
-                                <div class="col-sm-8 col-lg-8">
+                            <div class="datosIngresar">
+                                <label>Hora:</label>
+                                <div>
                                     <input type="time" id="hora" name="hora" class="form-control">
                                 </div>
                             </div>
         
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-lg-4 col-form-label">Razon de turno:</label>
-                                <div class="col-sm-8 col-lg-8">
+                            <div class="datosIngresar">
+                                <label>Razon de turno:</label>
+                                <div>
                                     <textarea id="razon" name="razon" class="form-control"></textarea>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                    <button type="submit" class="btn btn-success w-100 d-block">Agendar turno</button>
+                            <div class="datosIngresar">
+                                    <button type="submit" class="btnTurno">Agendar turno</button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-6 listado">
+                    <!-- <div class="col-md-6 listado">
                         <h2 id="administra" class="mb-4">Administra tus Turnos</h2>
                         <ul id="turnos" class="list-group lista-citas"></ul>
-                    </div>
+                    </div> -->
                 </div> <!--.row-->
             </div><!--.container-->
-        
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tus Turnos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="listado">
+                <ul id="turnos" class="list-group lista-citas"></ul>
+            </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Imprimir comprobante</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
             <script src="{% static 'webitbank/calendar.js' %}"></script>
         
         </body>

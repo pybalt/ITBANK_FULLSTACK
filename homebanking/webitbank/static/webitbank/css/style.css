@@ -1,7 +1,9 @@
 .principal {
     margin-top: 5rem;
 }
-
+.dark{
+    background-color: rgb(0, 0, 0);
+}
 li {
     display: inline;
 }
@@ -19,6 +21,13 @@ a{
 .navbar{
     background-image: linear-gradient(to right,rgb(0, 141, 235), rgb(23, 228, 243), rgb(0, 141, 235));
 }
+.dark  .navbar-toggler  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+
+.dark .navbar{
+    background-image: linear-gradient(to right,rgb(0, 0, 0), rgb(23, 228, 243), rgb(0, 0, 0));
+}
 .nav_prin {
     display: inline;
     text-align: center;
@@ -34,6 +43,9 @@ a{
     color: rgb(73, 73, 73);
     font-weight: 600;
     font-size: 100%;
+}
+.dark .producto{
+    color: white;
 }
 
 .titulo {
@@ -66,6 +78,14 @@ a{
     position: relative;
     text-align: center;
 }
+.dark .product-card{
+    background-color: #000;
+    border: 1px solid rgb(104, 104, 104);
+}
+
+.product-card input{
+    color: rgb(0, 141, 235);
+}
 
 .product-card:before {
     content: '';
@@ -79,7 +99,9 @@ a{
     transition: all .25s;
     z-index: -1;
 }
-
+.dark .product-card:before{
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(23, 228, 243));
+}
 .product-card:hover {
     border: 1px solid transparent;
     color: #fff;
@@ -103,18 +125,37 @@ a{
     color: rgba(255, 255, 255, 0.87);
 }
 
+/* modal */
+.modal-header{
+    background-image: linear-gradient(to right,rgb(0, 141, 235), rgb(23, 228, 243), rgb(0, 141, 235));
+}
+.modal-body{
+    margin: 0 auto;
+}
+
+.modal-body input{
+    border: none;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+}
 /*footer*/
 footer {
     border-top: 1px solid #e5e5e5;;    
     padding: 20px;
     text-align: center;
 }
-
+.dark footer{
+    background-color: #000;
+    color: white;
+}
 .primera-columna-footer {
     color: grey;
     font-style: italic;
 }
-
+.dark .primera-columna-footer {
+    color: rgb(201, 201, 201);
+}
 .grid-header {
     font-weight: bold;
 }
@@ -128,13 +169,17 @@ footer {
     text-decoration: none;
     font-weight: 400;
 }
-
+.dark .footer a {
+    color: rgb(201, 201, 201);
+}
 .footer a:hover {
     color: #000;
     text-shadow: 1px 2px 2px rgba(148, 148, 148, 0.573);
     text-decoration: underline;
 }
-
+.dark .footer a:hover {
+    color: #44a2f8;
+}
 .box img {
     height: 3em;
     padding: 3px;
@@ -161,6 +206,10 @@ footer {
     background-color: #fafafa;
 }
 
+.dark .dolar .compra-venta{
+    background-color: #333;
+    color: white;
+}
 .dolar .card-text {
     margin: 0px;
 }
@@ -197,41 +246,7 @@ footer {
     cursor: default
 }
 
-.noticias {
-    padding: 10px 8px 3px 8px;
-    background-color: #dddddd;
-    border: 1px solid #005689;
-    border-radius: 10px;
-    margin-top: 30px;
-}
 
-.noticias hr {
-    color: #005689;
-}
-
-.noticias .card {
-    border-radius: 10px;
-    border: 1px solid #1464f6;
-    margin-bottom: 7px;
-}
-
-.noticias h2 {
-    color: #44a2f8;
-}
-
-.noticias .card-body a {
-    color: #44a2f8;
-    text-decoration: none;
-}
-
-.noticias .card-body a:hover {
-    color: #005689;
-}
-
-.noticias img {
-    min-width: 130px;
-    max-width: 200px;
-}
 
 /*LAUTA*/
 .nav {
@@ -263,6 +278,11 @@ footer {
     transition: 0.9s;
 }
 
+.dark .btn2{
+    border: 3px solid black;
+    background-image: linear-gradient(to left,rgb(23, 228, 243) , rgb(0, 0, 0), rgb(23, 228, 243));
+}
+
 /* css para transferencias */
 .conteinerTitulos {
     display: flex;
@@ -278,10 +298,17 @@ footer {
     border: 2px rgba(0, 0, 0, 0.493) solid;
     border-radius: 5px;
     padding-left: 20px;
-    box-shadow:inset 2px 2px 4px rgba(120, 120, 120, .4), inset -3px -3px 3px rgba(255,255,255,.4);
+    box-shadow:inset 2px 2px 4px rgba(192, 192, 192, 0.4), inset -3px -3px 3px rgba(255,255,255,.4);
     overflow: hidden;
     padding-top: 5px;
 }
+
+.dark .conteinerTitulos h3{
+    color: white;
+    border: white 2px solid;
+    box-shadow:inset 2px 2px 4px rgba(165, 165, 165, 0.4), inset -3px -3px 3px rgba(255, 255, 255, 0.808);
+}
+
 .btnConsultas {
     background-color:  rgb(23, 228, 243);
     width: 20%;
@@ -290,12 +317,16 @@ footer {
     border-radius: 6px;
     overflow: hidden;
 }
-.col{
+.tip{
     background-color: rgba(209, 209, 209, 0.445);
     border: 2px solid rgb(134, 134, 134);
     border-radius: 6px;
     margin-left: 5px;
     margin-top: 5px;
+}
+.dark .tip{
+    background-color: rgba(247, 247, 247, 0.966);
+    border: 2px solid rgb(236, 236, 236);
 }
 .d-grid { 
     margin-top: 50px;
@@ -303,11 +334,12 @@ footer {
 .btnNewTransferencia {
     background-color:  rgb(23, 228, 243);
     height: 50px;
-    margin-left: 20px;
+    margin: 0 auto;
     border-radius: 6px;
     overflow: hidden;
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 50px;
 }
 .list-group{
     margin-top: 30px;
@@ -325,6 +357,7 @@ footer {
     font-weight: 500;
     
 }
+
 /* css para pago de servicios */
 .conteinerDivServicios{
     display: flex;
@@ -352,8 +385,15 @@ footer {
     color: #1464f6;
     margin-left: 60px;
 }
+.dark .servicios{
+    color: #44a2f8;
+    border: 2px solid #619dd448;
+}
 .servicios a{
     font-size: 30px;
+    color: #44a2f8;
+}
+.dark .servicios a{
     color: #44a2f8;
 }
 /* css para prestamos */
@@ -377,4 +417,322 @@ footer {
 }
 .imgPrestamo{
     width: 20%;   
+}
+.dark .textoPrestamo{
+    color: white;
+}
+/* NOTICIAS */
+
+.noticias .card{
+    margin: 20px;
+    overflow: hidden;
+}
+.dark .noticias .card{
+    background-color: #333;
+    color: white;
+}
+.card-img{
+    width: 100%;
+    transition: 0.5s;
+    
+}
+.conteinerImgNoticia{
+    overflow: hidden;
+    margin-top: 10px;
+}
+.card:hover .card-img{
+    transform: scale(1.5);
+}
+
+.card a{
+    margin: 10px auto;
+}
+
+.text{
+    margin-top: 10px;
+}
+.dark .text{
+    color: white;
+}
+.dark .noticias .btn{
+    color: white;
+}
+/* turnos */
+
+.conteinerTurno{
+    display: flex;
+    /* background-image: linear-gradient(to left, rgb(23, 228, 243), rgb(0, 141, 235), rgb(23, 228, 243)); */
+    background-image: url(../imagenes/turnosweb.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;  
+    border-radius: 20px;
+    text-align: left;
+    padding: 50px;
+    justify-content: center;
+    color: white;
+    margin-bottom: 50px;
+}
+.conteinerTurno legend{
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 50px;
+    font-weight: 800;
+    margin-top: 50px;
+    color: white
+}
+label{
+    color: white;
+}
+.agregar-cita{
+    width: 100%;
+    
+}
+#nueva-cita{
+    margin: 50px 180px 0 auto;
+    text-align: center;
+}
+#contenido{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: right;
+}
+.datosIngresar{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.datosIngresar .form-control{
+    width: 360px;
+    margin-top: 10px;
+    background-color: white;
+    border: #000 2px solid;
+    color: black;
+}
+.dark .form-control{
+    background-color: rgb(158, 158, 158);
+    color: white;
+}
+.datosIngresar label{
+    margin: auto 10px;
+}
+/* .imgTurno{
+    width: 50%;
+    margin: 0 auto;
+} */
+.btnTurno{
+    margin-top: 20px;
+    width: 360px;
+    height: 50px;
+    background-color: #44a2f8;
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+
+}
+.conteinerTurnoSacado{
+    width: 100%;
+}
+
+/* preguntas frecuentes */
+.preguntasFrecuentes {
+    background-image: url(../imagenes/preguntas-frecuentes.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+.preguntasFrecuentes h1 {
+      margin: 15px;
+      font-size: 25px; 
+}
+.dark .preguntasFrecuentes h1{
+    color: white;
+}
+.preguntasFrecuentes .pregunta {
+      border-radius: 20px;
+      height: auto; 
+}
+.preguntasFrecuentes .pregunta h2 {
+        margin: 20px;
+        text-align: center;
+        margin-top: 35px; 
+}
+.preguntasFrecuentes .pregunta .preguntaNaranja {
+        background-color: #1464f6;
+        opacity: 0.9;
+        width: 90%;
+        padding: 2px;
+        color: white;
+        margin: 0 auto; 
+}
+.preguntasFrecuentes .pregunta .preguntaNegro {
+        background-color: #44a2f8;
+        opacity: 0.9;
+        color: white;
+        width: 80%;
+        padding: 2px;
+        margin: 10px auto; 
+}
+.preguntasFrecuentes .respuesta {
+      margin: 0 auto;
+      width: 50%;
+      background-color: orange;
+      border-radius: 20px; 
+}
+.preguntasFrecuentes .contactar {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: center;
+      margin-top: 100px; 
+}
+.preguntasFrecuentes .contactar .btnContactar {
+        background-color: black;
+        color: white;
+        width: 100px;
+        height: 30px;
+        margin-left: 25px;
+        border-radius: 6px; 
+}
+
+.dark .contactar h3{
+    color: white;
+}
+
+/* contacto */
+
+.whatsapp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #095e54;
+    color: white;
+}
+.modal-bodyWp{
+    background-color: rgb(230, 221, 212);
+}
+.chat{
+    background-color: white;
+    width: 250px;
+    height: 100px;
+    margin: 10px;
+}
+.nombreChat{
+    font-size: 25px;
+    margin: 5px;
+    color: rgb(85, 85, 85);
+}
+.mensaje{
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.hora{
+    text-align: right;
+    margin-right: 5px;
+}
+.btnChat{
+    width: 80%;
+    margin: 0 auto;
+    background-color: #4fce5d ;
+    border-radius: 15px;
+    color: white;
+    border: #4fce5d ;
+    height: 40px;
+}
+
+/* vista en mobile */
+
+@media(max-width:768px){
+    /* noticias */
+    .noticias{
+        display: flex;
+        flex-direction: column;
+    }
+    .card{
+        width: 90%;
+    }
+
+    /* accesos directos */
+
+    .btn2 {
+        display: grid;
+        height: 80px;
+        border: 3px solid rgb(255, 255, 255);
+        margin: 0px;
+        padding: 15px;
+        width: 100%;
+        font-size: 12px;
+        border-radius: 50px;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+        background-size: 300%;
+        background-image: linear-gradient(to left, rgb(23, 228, 243), rgb(0, 141, 235), rgb(23, 228, 243));
+        transition: 0.9s;
+    }
+   .prod{
+    padding: 1px;
+   }
+ /* servicios */
+ .servicios{
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+ }
+ .conteinerServicios{
+    justify-items: center;
+    width: 150px;
+    margin: 1px;
+    margin-bottom: 10px;
+ }
+ .conteinerTitulos{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px auto;
+ }
+ .conteinerTitulos h3{
+    width: 100%;
+    font-size: 20px;
+    margin: 0 auto;
+ }
+ .btnConsultas{
+    width: 160px;
+    height: 30px;
+    font-size: 10px;
+    margin: 5px auto;
+    
+ }
+/* transferencias */
+.btnNewTransferencia{
+    width: 200px;
+    font-size: 15px;
+}
+
+/* turnos */
+.solicita{
+    display: none;
+}
+#nueva-cita{
+    margin: 0 auto;
+}
+.datosIngresar .form-control{
+    width: 200px;
+}
+.btnTurno{
+    width: 200px;
+}
+/* modo ascuro */
+
+}
+@media(max-width:1020px){
+    .solicita{
+        display: none;
+    }
+    #nueva-cita{
+        margin: 0 auto;
+    }
 }

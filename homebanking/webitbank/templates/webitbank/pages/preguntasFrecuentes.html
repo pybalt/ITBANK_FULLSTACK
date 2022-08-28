@@ -1,0 +1,103 @@
+{% extends "webitbank/base.html" %}
+
+{% block title%} Noticias {% endblock %}
+
+
+{% block content %}
+
+<main>
+    <section class="preguntasFrecuentes">
+<h1>Preguntas frecuentes</h1>
+<section class="conteinerPregunta">
+ 
+    
+    <a class="preguntaNaranja pregunta" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <div class="preguntaNaranja pregunta">
+            <h2>¿La cancelación anticipada tiene cargo?</h2>
+        </div>
+    </a>
+    <div class="collapse respuesta" id="collapseExample">
+        <div class="preguntaNaranja pregunta">
+          <h2>Cancelación total anticipada: no tiene cargo si se realiza una vez transcurrido el 25% del plazo original del crédito. (Ej. : Si Ud. tomó un crédito a 120 meses y cancela totalmente el crédito en la cuota n° 31, la cancelación no tiene cargo). Caso contrario el cargo es del 3% + IVA.</h2>
+        </div>
+    </div>
+    <a class="preguntaNaranja pregunta" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <div class="preguntaNegro pregunta">
+            <h2>¿A partir de qué cuota puedo cancelar total o parcialmente el crédito inmobiliario?</h2>
+        </div>
+    </a>
+    <div class="collapse respuesta" id="collapseExample2">
+        <div class="preguntaNaranja pregunta">
+          <h2>Usted podrá precancelar el crédito a partir del momento que lo desee y debe contar, por lo menos, con el importe de una cuota adicional a la que vence.
+            Sólo podrá cancelar anticipadamente el día de vencimiento de la cuota.</h2>
+        </div>
+    </div>
+    <a class="preguntaNaranja pregunta" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <div class="preguntaNaranja pregunta">
+            <h2>¿A que monto puedo acceder?</h2>
+        </div>
+    </a>
+    <div class="collapse respuesta" id="collapseExample3">
+        <div class="preguntaNaranja pregunta">
+          <h2>El monto del crédito al cual podrá acceder será determinado en función a sus ingresos y  su capacidad de pago.
+            Si Ud. es cliente Black podrá acceder a un prestamo de $500.000.
+            Si Ud. es cliente Gold podrá acceder a un prestamo de $300.000.
+            Si Ud. es cliente Classic podrá acceder a un prestamo de $100.000.
+          </h2>
+        </div>
+    </div>
+    <a class="preguntaNaranja pregunta" data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <div class="preguntaNegro pregunta">
+            <h2>¿Tienen atención al cliente?</h2>
+        </div>
+    </a>
+    <div class="collapse respuesta" id="collapseExample4">
+        <div class="preguntaNaranja pregunta">
+          <h2>Si, puedes contactarnos <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">aqui</a></h2>
+        </div>
+    </div>
+    <a class="preguntaNaranja pregunta" data-bs-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <div class="preguntaNaranja pregunta">
+            <h2>¿Puedo con un crédito hipotecario comprar un local comercial?</h2>
+        </div>
+    </a>
+    <div class="collapse respuesta" id="collapseExample5">
+        <div class="preguntaNaranja pregunta">
+          <h2>NO, solo para compra, refacción o ampliación de vivienda.</h2>
+        </div>
+    </div>
+    <a class="preguntaNaranja pregunta" data-bs-toggle="collapse" href="#collapseExample6" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <div class="preguntaNegro pregunta">
+            <h2>¿Qué es un Préstamo Prendario?</h2>
+        </div>
+    </a>
+    <div class="collapse respuesta" id="collapseExample6">
+        <div class="preguntaNaranja pregunta">
+          <h2>Un Préstamo Prendario es un plan de financiación para la compra de vehículos para uso particular.</h2>
+        </div>
+    </div>
+    <a class="preguntaNaranja pregunta" data-bs-toggle="collapse" href="#collapseExample7" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <div class="preguntaNaranja pregunta">
+            <h2>¿Cómo saco un Turno Online?</h2>
+        </div>
+    </a>
+    <div class="collapse respuesta" id="collapseExample7">
+        <div class="preguntaNaranja pregunta">
+          <h2>Para agilizar la gestión en sucursal te recomendamos que saques un turno online. Solicitalo <a href="{% url 'turnos'%}">aqui</a> </h2>
+        </div>
+    </div>
+    
+    
+<section class="contactar">
+    <h3>¿Tienes alguna pregunta? Contactanos!</h3>
+    <button class="btnContactar"><a href="Contacto.html">Contactar</a></button>
+</section>
+</section>
+</section>
+</main>
+
+
+
+
+
+{% endblock content %}
