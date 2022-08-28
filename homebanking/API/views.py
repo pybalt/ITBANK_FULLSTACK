@@ -177,6 +177,7 @@ class EMPLEADO_AnularSolicitudDePrestamo(APIView):
             return Response(serializer.data, status = status.HTTP_302_FOUND)
         
         except queryset.DoesNotExist:
+            print("No existe prestamo para borrar")
             return Response(status = status.HTTP_404_NOT_FOUND)
 
 
