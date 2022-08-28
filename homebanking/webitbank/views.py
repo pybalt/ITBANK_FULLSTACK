@@ -1,6 +1,7 @@
 from urllib.request import Request
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
+from .models import Sucursal
 import requests
 
 def login(request):
@@ -55,7 +56,8 @@ def turnos(request):
 
 @login_required
 def sucursales(request):
-    return render(request, "webitbank/pages/sucursales.html")
+    sucursal_list=Sucursal.objects.all()
+    return render(request, "webitbank/pages/sucursales.html",{'sucursal_list':sucursal_list})
 
 @login_required
 def preguntasFrecuentes(request):

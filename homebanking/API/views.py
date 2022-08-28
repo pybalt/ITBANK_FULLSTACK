@@ -255,6 +255,8 @@ class ModificarDireccionCliente(APIView):
      
         
 class PUBLICA_SucursalesList(generics.ListAPIView):
+
+    
     def get(self, request): 
         queryset = Sucursal.objects.all()
         serializer_class = SucursalesSerializer(queryset,many=True)

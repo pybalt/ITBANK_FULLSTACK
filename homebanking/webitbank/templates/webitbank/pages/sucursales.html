@@ -3,21 +3,27 @@
 
 {% block title%} Sucursales {% endblock %}
 
-
-
 {% block content %}
-          <div class="container2">
-            <div class="row">
-              {% for dir in dir %}
-                {{ dir.calle }}
 
-              {% endfor %}
-            </div>
-          </div>
-      <!-- Finalizan las tabs -->
+    <h1>Sucursales</h1> 
+    
+{% for sucursal in sucursal_list %}
+    <strong>{{ sucursal.branch_name }}</strong>
+    <ul>
+    <li>ID: {{ sucursal.branch_id }}</li><br/>
+    <li>Numero: {{ sucursal.branch_number }}</li><br/>
+    <li>Nombre: {{ sucursal.branch_name }}</li><br/>
+    <li>Direccion: </li><br/><br/>
+   
+    <li>Calle: {{ sucursal.branch_address.calle }}</li><br/>
+    <li>Numero: {{ sucursal.branch_address.numero }}</li><br/>
+    <li>Ciudad: {{ sucursal.branch_address.ciudad }}</li><br/>
+    <li>Pais: {{ sucursal.branch_address.pais }}</li><br/>
+    <li>Provincia: {{ sucursal.branch_address.provincia }}</li><br/>
 
-    </section>
-  </main>
-  <!--  pie de página principal -->
+    </ul>
+  <br/>
+{% endfor %}
+    
 
-  {% endblock %}
+{% endblock %}
