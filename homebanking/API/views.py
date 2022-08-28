@@ -9,7 +9,7 @@ from clientes.models import Cliente
 from movimiento.models import Movimientos
 from prestamos.models import Prestamo
 from types import MethodType # Para crearle decoradores a las clases
-
+from rest_framework.renderers import TemplateHTMLRenderer
 from webitbank.models import Sucursal
 from cuentas.models import Cuenta
 from .serializers import *
@@ -108,12 +108,17 @@ class EMPLEADO_PrestamosPorSucursal(APIView):
     
     permission_classes = [AuthenticatedEmployee]  
     def get(self, request, pk):
+        try:
 
-        sucursal = Sucursal.objects.get(pk = pk)  
-        queryset = Prestamo.objects.filter(account__customer__branch = sucursal)        
-        serializer = PrestamosSerializer(queryset, many = True)  
+            sucursal = Sucursal.objects.get(pk = pk)  
+            queryset = Prestamo.objects.filter(account__customer__branch = sucursal)        
+            serializer = PrestamosSerializer(queryset, many = True)  
 
-        return Response(serializer.data, status = status.HTTP_200_OK)
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        except Sucursal.DoesNotExist:
+            print("La sucursal no existe")
+            return Response(status = status.HTTP_400_BAD_REQUEST)
+
     
     
             
@@ -137,7 +142,9 @@ class EMPLEADO_GenerarSolicitudDePrestamo(APIView):
     def post(self, request):
         try:
             if not Cuenta.objects.filter(pk = request.data['account']).exists():
-                return Response(status = status.HTTP_404_NOT_FOUND)    
+                
+                return Response(status = status.HTTP_404_NOT_FOUND)
+
 
             serializer = NuevoPrestamoSerializer (data = request.data)
             
@@ -235,5 +242,7 @@ class ModificarDireccionCliente(APIView):
      
         
 class PUBLICA_SucursalesList(generics.ListAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'sucursales.html'
     queryset = Sucursal.objects.all()
     serializer_class = SucursalesSerializer
