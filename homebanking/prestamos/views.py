@@ -32,7 +32,7 @@ def prestamos(request):
             #Extraer Datos de Usuario
             nameUser = request.user.first_name
             surnameUser = request.user.last_name
-            dniUser = User.objects.select_related('auth_user', 'cliente')
+            dniUser = User.objects.select_related('auth_user', 'cliente') #request.user.
             print(dniUser)
             #Datos a comparar sacados del Formulario
             #nameRecived = request.POST.get('name','')
