@@ -3,8 +3,10 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from cuentas.models import Cuenta
+from movimiento.models import Movimientos
 from .models import Sucursal
 import requests
+from clientes.models import Cliente
 
 def login(request):
     return render(request, "registration/login.html")
@@ -51,7 +53,9 @@ def prestamos(request):
 
 @login_required
 def transferencias(request):
-    return render(request, "webitbank/pages/transferencias.html")
+    cliente = Cliente.objects.get(user = request.user)
+    movimiento_list=Movimientos.objects.filter(cuenta_remitente__customer = cliente)
+    return render(request, "webitbank/pages/transferencias.html",{'movimiento_list':movimiento_list})
 
 @login_required
 def turnos(request):
