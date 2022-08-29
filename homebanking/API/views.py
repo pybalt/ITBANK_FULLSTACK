@@ -119,7 +119,7 @@ class EMPLEADO_PrestamosPorSucursal(APIView):
             return Response(serializer.data, status = status.HTTP_200_OK)
         except Sucursal.DoesNotExist:
             print("La sucursal no existe")
-            return Response(status = status.HTTP_400_BAD_REQUEST)
+            return Response(status = status.HTTP_404_NOT_FOUND)
 
     
 class EMPLEADO_TarjetasDelCliente(APIView):
@@ -132,7 +132,7 @@ class EMPLEADO_TarjetasDelCliente(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             print("No hay tarjetas de creditos para ese cliente")
-            return Response(status = status.HTTP_400_BAD_REQUEST)
+            return Response(status = status.HTTP_404_NOT_FOUND)
         
 
 
@@ -239,7 +239,7 @@ class ModificarDireccionCliente(APIView):
                 queryset = Cliente.objects.get(user_id = id).direccion
             except Cliente.DoesNotExist:
                 print("El cliente no existe")
-                return Response(status = status.HTTP_400_BAD_REQUEST)
+                return Response(status = status.HTTP_404_NOT_FOUND)
 
         serializer = DireccionSerializer(queryset, data=request.data)
 
