@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "b6455893-2045-4edf-a814-d137fe89300e",
+		"name": "API SPRINT 8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22862450"
+	},
+	"item": [
+		{
+			"name": "CLIENTE solicita sus DATOS",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "cliente_1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Root134!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}api/cliente/misdatos/",
+					"host": [
+						"{{localhost}}api"
+					],
+					"path": [
+						"cliente",
+						"misdatos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTE solicita sus DATOS Copy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "cliente_1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Root134!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}api/cliente/misdatos/",
+					"host": [
+						"{{localhost}}api"
+					],
+					"path": [
+						"cliente",
+						"misdatos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTE solicita sus CUENTAS, con su tipo y saldo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "cliente_1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Root134!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}api/cliente/misdatos/cuentas/",
+					"host": [
+						"{{localhost}}api"
+					],
+					"path": [
+						"cliente",
+						"misdatos",
+						"cuentas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CLIENTE solicita DATOS de PRESTAMOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}api/cliente/misdatos/prestamos/",
+					"host": [
+						"{{localhost}}api"
+					],
+					"path": [
+						"cliente",
+						"misdatos",
+						"prestamos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EMPLEADO solicita PRESTAMOS por SUCURSAL",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Root134!",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "empleado",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}api/empleado/prestamos/sucursal/2",
+					"host": [
+						"{{localhost}}api"
+					],
+					"path": [
+						"empleado",
+						"prestamos",
+						"sucursal",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ERROR",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}api/empleado/prestamos/sucursal/6",
+							"host": [
+								"{{localhost}}api"
+							],
+							"path": [
+								"empleado",
+								"prestamos",
+								"sucursal",
+								"6"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "EMPLEADO solicita TARJETAS de CREDITO de un CLIENTE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": [
+				{
+					"name": "ERROR",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "EMPLEADO genera PRESTAMO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EMPLEADO anula PRESTAMO de CLIENTE",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "empleado",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Root134!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}api/empleado/cliente/quitarprestamo/10",
+					"host": [
+						"{{localhost}}api"
+					],
+					"path": [
+						"empleado",
+						"cliente",
+						"quitarprestamo",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EMPLEADO modifican DIRECCION CLIENTE <idCliente>",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "empleado",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Root134!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"direccion_id\":2,\"calle\":\"awd\",\"numero\":3,\"ciudad\":\"asd\",\"pais\":\"z\",\"provincia\":\"hhhhh\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}api/cliente/modificardireccion/2",
+					"host": [
+						"{{localhost}}api"
+					],
+					"path": [
+						"cliente",
+						"modificardireccion",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ERROR",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"direccion_id\":2,\"calle\":\"awd\",\"numero\":3,\"ciudad\":\"asd\",\"pais\":\"z\",\"provincia\":\"hhhhh\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}api/cliente/modificardireccion/99999999",
+							"host": [
+								"{{localhost}}api"
+							],
+							"path": [
+								"cliente",
+								"modificardireccion",
+								"99999999"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "CLIENTE modifica su propia DIRECCION <idCliente>",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "cliente_1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "Root134!",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"direccion_id\":2,\"calle\":\"awd\",\"numero\":3,\"ciudad\":\"asd\",\"pais\":\"z\",\"provincia\":\"hhhhh\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}api/cliente/modificardireccion/2",
+					"host": [
+						"{{localhost}}api"
+					],
+					"path": [
+						"cliente",
+						"modificardireccion",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ENDPOINT PUBLICO LISTA DE SUCURSALES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
