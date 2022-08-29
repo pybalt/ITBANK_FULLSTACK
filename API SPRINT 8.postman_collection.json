@@ -27,11 +27,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{localhost}}api/cliente/misdatos/",
+					"raw": "http://127.0.0.1:8000/api/cliente/misdatos/",
+					"protocol": "http",
 					"host": [
-						"{{localhost}}api"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
+						"api",
 						"cliente",
 						"misdatos",
 						""
@@ -61,11 +67,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{localhost}}api/cliente/misdatos/",
+					"raw": "http://127.0.0.1:8000/api/cliente/misdatos/",
+					"protocol": "http",
 					"host": [
-						"{{localhost}}api"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
+						"api",
 						"cliente",
 						"misdatos",
 						""
@@ -95,11 +107,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{localhost}}api/cliente/misdatos/cuentas/",
+					"raw": "http://127.0.0.1:8000/api/cliente/misdatos/cuentas/",
+					"protocol": "http",
 					"host": [
-						"{{localhost}}api"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
+						"api",
 						"cliente",
 						"misdatos",
 						"cuentas",
@@ -115,11 +133,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{localhost}}api/cliente/misdatos/prestamos/",
+					"raw": "http://127.0.0.1:8000/api/cliente/misdatos/prestamos/",
+					"protocol": "http",
 					"host": [
-						"{{localhost}}api"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
+						"api",
 						"cliente",
 						"misdatos",
 						"prestamos",
@@ -150,11 +174,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{localhost}}api/empleado/prestamos/sucursal/2",
+					"raw": "http://127.0.0.1:8000/api/empleado/prestamos/sucursal/2",
+					"protocol": "http",
 					"host": [
-						"{{localhost}}api"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
+						"api",
 						"empleado",
 						"prestamos",
 						"sucursal",
@@ -194,7 +224,22 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:8000/api/empleado/cliente/tarjetas/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"empleado",
+						"cliente",
+						"tarjetas",
+						"1"
+					]
 				}
 			},
 			"response": [
@@ -217,10 +262,25 @@
 		{
 			"name": "EMPLEADO genera PRESTAMO",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:8000/api/empleado/cliente/otorgarprestamo/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"empleado",
+						"cliente",
+						"otorgarprestamo",
+						""
+					]
 				}
 			},
 			"response": []
@@ -255,11 +315,17 @@
 					}
 				},
 				"url": {
-					"raw": "{{localhost}}api/empleado/cliente/quitarprestamo/10",
+					"raw": "http://127.0.0.1:8000/api/empleado/cliente/quitarprestamo/10",
+					"protocol": "http",
 					"host": [
-						"{{localhost}}api"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
+						"api",
 						"empleado",
 						"cliente",
 						"quitarprestamo",
@@ -299,11 +365,17 @@
 					}
 				},
 				"url": {
-					"raw": "{{localhost}}api/cliente/modificardireccion/2",
+					"raw": "http://127.0.0.1:8000/api/cliente/modificardireccion/2",
+					"protocol": "http",
 					"host": [
-						"{{localhost}}api"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
+						"api",
 						"cliente",
 						"modificardireccion",
 						"2"
@@ -374,11 +446,17 @@
 					}
 				},
 				"url": {
-					"raw": "{{localhost}}api/cliente/modificardireccion/2",
+					"raw": "http://127.0.0.1:8000/api/cliente/modificardireccion/2",
+					"protocol": "http",
 					"host": [
-						"{{localhost}}api"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
+					"port": "8000",
 					"path": [
+						"api",
 						"cliente",
 						"modificardireccion",
 						"2"
@@ -393,7 +471,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:8000/api/sucursales/lista",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"sucursales",
+						"lista"
+					]
 				}
 			},
 			"response": []
