@@ -3,6 +3,7 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from cuentas.models import Cuenta
+from tarjetas.models import Cards
 from movimiento.models import Movimientos
 from .models import Sucursal
 import requests
@@ -21,8 +22,10 @@ def pagoServicios(request):
 
 @login_required
 def productos(request):
-    cuenta_list=Cuenta.objects.all()
-    return render(request, "webitbank/pages/productos.html",{'cuenta_list':cuenta_list})
+    cliente = Cliente.objects.get(user = request.user)
+    cuenta_list=Cuenta.objects.filter(customer = cliente.customer_id)
+    tarjeta_list=Cards.objects.filter(account__customer = cliente.customer_id)
+    return render(request, "webitbank/pages/productos.html",{'cuenta_list':cuenta_list,'tarjeta_list':tarjeta_list})
 
 @login_required
 def dolar(request):
