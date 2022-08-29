@@ -122,9 +122,6 @@ class EMPLEADO_PrestamosPorSucursal(APIView):
             return Response(status = status.HTTP_400_BAD_REQUEST)
 
     
-    
-            
-
 class EMPLEADO_TarjetasDelCliente(APIView):
 
     permission_classes = [AuthenticatedEmployee] 
