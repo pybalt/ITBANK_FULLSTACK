@@ -26,7 +26,7 @@ urlpatterns = [
     path('productos/',          views.productos,                            name="productos"),
     path('dolar/',              views.dolar,                                name="dolar"),
     path('noticias/',           views.noticias,                             name="noticias"),
-    path('prestamos/',         views.prestamos,                             name="prestamos"),
+    #path('prestamos/',         views.prestamos,                             name="prestamos"),
     path('prestamos/',          include('prestamos.urls')),
     path('sucursales/',         views.sucursales,                           name="sucursales"),
     path('transferencias/',     views.transferencias,                       name="transferencias"),

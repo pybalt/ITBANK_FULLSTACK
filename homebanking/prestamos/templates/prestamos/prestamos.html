@@ -1,41 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "webitbank/base.html" %}
 
-    
-    
-    {% if 'ok' in request.GET %}
-    <p><b>Su prestamo ha sido aceptado, el saldo de su cuenta ya fue actualizado</b></p>
-    {% endif %}
-    {% if 'notok' in request.GET %}
-    <p><b>Alguno de los campos ingresados no es válido</b></p>
-    {% endif %}
-    {% if 'nomonto' in request.GET %}
-    <p><b>El monto solicitado supera el límite establecido para su cuenta.
-        Los límites son: 500000 para clientes Black, 300000 para clientes Gold y 10000 para clientes Classic</b></p>
-    {% endif %}
-    {% if 'nocoincide' in request.GET %}
-    <p><b>Los datos ingresados en el formulario no coincide con los asociados al usuario logueado. 
-        Recuerde que solo puede solicitar el prestamo desde el usuario asociado a la cuenta en la que desea recibir el dinero</b></p>
-    {% endif %}
-    
-    
+{% block title%} Préstamos {% endblock %}
 
-    
-    <form action="" method="POST">
+
+{% block content %}
+  <main>
+    <div class="conteinerTitulos">
+      <h3>Préstamos</h3>
+        <button class="btnConsultas btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Consultas y Operaciones
+        </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="{% url 'turnos'%}">Solicitar préstamo</a></li>
+      </ul>
+    </div>
+    <div class="conteinerPrestamo">
+      <h3 class="prestamo">Podés solicitar tu préstamo en tu sucursal de lunes a viernes de 8 a 21hs.</h3>
+      <!-- <img class=" imgPrestamo" src="../../public/images/prestamo.png" alt=""> -->
+    </div>
+    <hr>
+    <p style="font-size: 20px;" class="textoPrestamo">Sacá turno <a href="{% url 'turnos'%}">aquí</a> o pedí tu prestamo online llenando este formulario:</p>
+    <hr>
+    <div class="row"> 
+      <div class="col-md-10 mx-auto">
+        <!-- Formulario de contacto-->
+        {% if 'ok' in request.GET %}
+        <p><b>Su prestamo ha sido aceptado, el saldo de su cuenta ya fue actualizado</b></p>
+        {% endif %}
+        {% if 'notok' in request.GET %}
+        <p><b>Alguno de los campos ingresados no es válido</b></p>
+        {% endif %}
+        {% if 'nomonto' in request.GET %}
+        <p><b>El monto solicitado supera el límite establecido para su cuenta.
+            Los límites son: 500000 para clientes Black, 300000 para clientes Gold y 10000 para clientes Classic</b></p>
+        {% endif %}
+        {% if 'nocoincide' in request.GET %}
+        <p><b>Los datos ingresados en el formulario no coincide con los asociados al usuario logueado. 
+            Recuerde que solo puede solicitar el prestamo desde el usuario asociado a la cuenta en la que desea recibir el dinero</b></p>
+        {% endif %}
+        {% if 'nocliente' in request.GET %}
+        <p><b>el usuario no tiene ningún cliente asociado</b></p>
+        {% endif %}
+        {% if 'nocuenta' in request.GET %}
+        <p><b>Usted no posee una caja de ahorro en pesos</b></p>
+        {% endif %}
+        
+       <form action="" method="POST">
         {% csrf_token %}
-        <table>
-            {{form.as_p}}
-        </table>
-        <input type="submit" value="Solicitar Prestamo">
-    </form>
-    {{request.POST}}
-    
-</body>
-</html>
+          <div class="form-group">
+            <table>
+              {{form.as_p}}
+            </table>
+            <input type="submit" class="btnConsultas btn-secondary" value="Enviar" />
+          </div>
+          </form>
+      <!--{{request.POST}}-->
+      </div>
+  </div>
+  </main>
+  <!--  pie de página principal -->
+
+
+{%endblock%}
