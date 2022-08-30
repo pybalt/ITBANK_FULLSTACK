@@ -24,38 +24,8 @@
       <div class="col-md-10 mx-auto">
         <p><b></b></p>
         <p>{{msj}}</p>
-        <!-- Formulario de contacto-->
-        {% if 'ok' in request.GET %}
-        <p><b>Su prestamo ha sido aceptado, el saldo de su cuenta ya fue actualizado</b></p>
-        {% endif %}
-        {% if 'notok' in request.GET %}
-        <p><b>Alguno de los campos ingresados no es válido</b></p>
-        {% endif %}
-        {% if 'nomonto' in request.GET %}
-        <p><b>El monto solicitado supera el límite establecido para su cuenta.
-            Los límites son: 500000 para clientes Black, 300000 para clientes Gold y 10000 para clientes Classic</b></p>
-        {% endif %}
-        {% if 'nocoincide' in request.GET %}
-        <p><b>Los datos ingresados en el formulario no coincide con los asociados al usuario logueado. 
-            Recuerde que solo puede solicitar el prestamo desde el usuario asociado a la cuenta en la que desea recibir el dinero</b></p>
-        {% endif %}
-        {% if 'nocliente' in request.GET %}
-        <p><b>el usuario no tiene ningún cliente asociado</b></p>
-        {% endif %}
-        {% if 'nocuenta' in request.GET %}
-        <p><b>Usted no posee una caja de ahorro en pesos</b></p>
-        {% endif %}
-        {% if 'noprestamo' in request.GET %}
-        <p><b>Error al registrar el préstamo.</b></p>
-        {% endif %}
-        {% if 'formatofecha' in request.GET %}
-        <p><b>Formato de fecha Incorrecto</b></p>
-        {% endif %}
-        
-        
-        
+        <!-- Formulario Solicitud de Prestamo-->       
        <form action="" method="POST">
-        
         {% csrf_token %}
           <div class="form-group">
             <table>
