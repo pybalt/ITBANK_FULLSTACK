@@ -20,6 +20,7 @@ from webitbank import views
 
 urlpatterns = [
     path('admin/',              admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('login/',              views.login,                                name="login"),
     path('',                    views.home,                                 name="home"),
     path('pagoServicios/',      views.pagoServicios,                        name="pagoServicios"),
@@ -32,6 +33,6 @@ urlpatterns = [
     path('transferencias/',     views.transferencias,                       name="transferencias"),
     path('turnos/',             views.turnos,                               name="turnos"),
     path('accounts/',           include('django.contrib.auth.urls')),
-    path('api/', include('API.urls')),
-    path('preguntasFrecuentes/',     views.preguntasFrecuentes,            name="preguntasFrecuentes"),
+    path('preguntasFrecuentes/',     views.preguntasFrecuentes,             name="preguntasFrecuentes"),
+    path('api/',                include('API.urls')),
 ]
