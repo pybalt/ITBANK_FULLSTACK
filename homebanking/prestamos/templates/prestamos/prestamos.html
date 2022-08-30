@@ -2,7 +2,6 @@
 
 {% block title%} Préstamos {% endblock %}
 
-
 {% block content %}
   <main>
     <div class="conteinerTitulos">
@@ -15,7 +14,7 @@
       </ul>
     </div>
     <div class="conteinerPrestamo">
-      <h3 class="prestamo">Podés solicitar tu préstamo en tu sucursal de lunes a viernes de 8 a 21hs.</h3>
+      <h3 class="prestamo">Podés solicitar tu préstamo en tu sucursal de lunes a viernes de 8 a 21hs</h3>
       <!-- <img class=" imgPrestamo" src="../../public/images/prestamo.png" alt=""> -->
     </div>
     <hr>
@@ -23,6 +22,8 @@
     <hr>
     <div class="row"> 
       <div class="col-md-10 mx-auto">
+        <p><b></b></p>
+        <p>{{msj}}</p>
         <!-- Formulario de contacto-->
         {% if 'ok' in request.GET %}
         <p><b>Su prestamo ha sido aceptado, el saldo de su cuenta ya fue actualizado</b></p>
@@ -44,8 +45,17 @@
         {% if 'nocuenta' in request.GET %}
         <p><b>Usted no posee una caja de ahorro en pesos</b></p>
         {% endif %}
+        {% if 'noprestamo' in request.GET %}
+        <p><b>Error al registrar el préstamo.</b></p>
+        {% endif %}
+        {% if 'formatofecha' in request.GET %}
+        <p><b>Formato de fecha Incorrecto</b></p>
+        {% endif %}
+        
+        
         
        <form action="" method="POST">
+        
         {% csrf_token %}
           <div class="form-group">
             <table>
