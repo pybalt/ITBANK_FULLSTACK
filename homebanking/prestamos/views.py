@@ -6,6 +6,7 @@ from clientes.models import Cliente
 from cuentas.models import Cuenta 
 from movimiento.models import Movimientos
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 def chequearUsuarioFormulario(nombreUsuario, 
                               apellidoUsuario, 
