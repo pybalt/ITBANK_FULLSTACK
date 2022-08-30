@@ -18,6 +18,10 @@ form {
 a{
     text-decoration: none;
 }
+
+.dark p {
+    color: white;
+}
 .navbar{
     background-image: linear-gradient(to right,rgb(0, 141, 235), rgb(23, 228, 243), rgb(0, 141, 235));
 }
@@ -480,7 +484,7 @@ footer {
     margin-top: 50px;
     color: white
 }
-label{
+.label{
     color: white;
 }
 .agregar-cita{
@@ -514,7 +518,7 @@ label{
     background-color: rgb(158, 158, 158);
     color: white;
 }
-.datosIngresar label{
+.datosIngresar .label{
     margin: auto 10px;
 }
 /* .imgTurno{
