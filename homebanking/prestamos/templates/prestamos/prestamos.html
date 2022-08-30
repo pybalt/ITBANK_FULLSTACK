@@ -22,21 +22,19 @@
     <hr>
     <div class="row"> 
       <div class="col-md-10 mx-auto">
-        <p><b></b></p>
-        <p>{{msj}}</p>
+        <p class="textoPrestamo">{{msj}}</p>
         <!-- Formulario Solicitud de Prestamo-->       
-       <form action="" method="POST">
+        <form action="" method="POST">
         {% csrf_token %}
           <div class="form-group">
             <table>
-              {{form.as_p}}
+                {{form.as_p}}             
             </table>
-            <input type="submit" class="btnConsultas btn-secondary" value="Enviar" />
+            <input type="submit" class="btnConsultas btn-secondary" value="Enviar"/>
           </div>
-          </form>
+        </form>
       <!--{{request.POST}}-->
-      </div>
-  </div>
+    </div>
   </main>
   <!--  pie de página principal -->
 
