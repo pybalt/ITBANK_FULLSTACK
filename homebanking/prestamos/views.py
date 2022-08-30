@@ -15,14 +15,14 @@ def chequearUsuarioFormulario(nombreUsuario,
                               dniFormulario):
     return (nombreUsuario == nombreFormulario 
     and apellidoUsuario == apellidoFormulario 
-    and dniUsuario == dniFormulario)
-    
+    and dniUsuario == dniFormulario)   
 
 def chequearMonto(monto,tipo_Cliente):
     montos = {'CLS': 100000,'GLD': 300000, 'BLK': 500000}
     limit = montos.get(tipo_Cliente,'')
     return monto <= limit
 
+@login_required
 def prestamosView(request):
     print('hola1')
     form_prestamo = SolicitudPrestamoForm
