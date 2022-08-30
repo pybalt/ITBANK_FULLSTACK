@@ -45,9 +45,6 @@ def noticias(request):
     context = {'mylist': mylist}
     return render(request, "webitbank/pages/noticias.html", context)
 
-@login_required
-def prestamos(request):
-    return render(request, "webitbank/pages/prestamos.html")
 
 @login_required
 def transferencias(request):
