@@ -641,6 +641,49 @@ label{
     height: 40px;
 }
 
+/* sucursales */
+.conteinerDatoSucursal{
+    display: flex;
+    flex-direction: column;
+}
+.datoSucursal{
+    border: 2px gray solid;
+    border-radius: 20px;
+    /* box-shadow: 0 5px 5px 0px #242424; */
+    margin-top: 10px;
+    padding-left: 20px;
+    transition: 0.1s;
+    cursor: pointer;
+}
+.datoSucursal:hover{
+    box-shadow: 0 5px 5px 0px #242424;
+}
+.dark .datoSucursal:hover{
+    box-shadow: 0 2px 5px 0px #c2c2c2;
+}
+.dark .datoSucursal{
+    color: white;
+}
+.datoSucursal p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+.dark .datoSucursal p{
+    color: rgb(156, 156, 156);
+}
+.datoSucursal h2{
+    font-size: 25px;
+    font-weight: 700;
+    
+}
+.conteinerUbi{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
 /* vista en mobile */
 
 @media(max-width:768px){
@@ -725,7 +768,21 @@ label{
 .btnTurno{
     width: 200px;
 }
-/* modo ascuro */
+
+/* sucursales */
+.conteinerUbi{
+    display: flex;
+    flex-direction: column;
+}
+.conteinerDatoSucursal{
+    width: 80%;
+    margin: 0 auto;
+}
+.mapa{
+    width: 80%;
+    height: 350px;
+    margin: 0 auto;
+}
 
 }
 @media(max-width:1020px){

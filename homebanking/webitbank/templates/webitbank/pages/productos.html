@@ -13,30 +13,45 @@
         <h2 class="producto">TUS PRODUCTOS</h2>
         <lauta>
           <div class="cont">
-            <div class="product-card">
-              <p class="titulo">Cuenta nºxxxxxxx</p>
-              <p>{{user}}</p>
-              <p>$0,00</p>
-              <p>U$s0,00</p>
-            </div>
-
-            <div class="product-card">
-              <p class="titulo">Visa Crédito xxxx-1234</p>
-              <p>{{user}}</p>
-              <p>$0,00</p>
-            </div>
-
-            <div class="product-card">
-              <p class="titulo">Visa Débito  xxxx-1234</p>
-              <p>{{user}}</p>
-              <p class="subt">Ver movimientos</p>
-            </div>
-
-            <div class="product-card">
-              <p class="titulo">Inversiones</p>
-              <p class="subt">Tenencia consolidada</p>
-            </div>
-
+            
+              {% for cuenta in cuenta_list %}
+              <div class="product-card">
+                <h2 class="producto">Cuenta</h2>
+                {% if 'CAP' in cuenta.tipo_cuenta %}
+                <p class="titulo">CAJA DE AHORRO EN PESOS</p>
+                {% endif %}
+                {% if 'CAD' in cuenta.tipo_cuenta %}
+                <p class="titulo">CAJA DE AHORRO EN DOLARES</p>
+                {% endif %}
+                {% if 'CC' in cuenta.tipo_cuenta %}
+                <p class="titulo">CUENTA CORRIENTE</p>
+                {% endif %}
+                <p>Usuario: {{user}}</p>
+                <p>Saldo: ${{cuenta.balance}}</p>
+              </div>
+              {% endfor %}
+            
+              {% for tarjeta in tarjeta_list %}
+              <div class="product-card">
+                {% if 'CRED' in tarjeta.tipo %}
+                <h2 class="producto">TARJETA DE CREDITO</h2>
+                {% endif %}
+                {% if 'DEB' in tarjeta.tipo %}
+                <h2 class="producto">TARJETA DE DEBITO</h2>
+                {% endif %}
+                <p class="titulo">Numero de tarjeta {{tarjeta.numero_tarjeta}}</p>
+                {% if 'VS' in tarjeta.marca_tarjeta %}
+                <p>VISA</p>
+                {% endif %}
+                {% if 'MC' in tarjeta.marca_tarjeta %}
+                <p>MASTERCARD</p>
+                {% endif %}
+                {% if 'AE' in tarjeta.marca_tarjeta %}
+                <p>AMERICAN EXPRESS</p>
+                {% endif %}
+              </div>
+              {% endfor %}
+              
             <div class="product-card">
               <p class="titulo">Autenticación</p>
               <input type="button" value="Generar Token" class="btn" onclick="Random();" data-bs-toggle="modal" data-bs-target="#exampleModal"/>  
