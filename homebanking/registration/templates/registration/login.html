@@ -20,6 +20,121 @@
         <link href="{% static 'landing_page/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body id="page-top">
+        <div class="modal fade" id="dolarModal" tabindex="-1" aria-labelledby="dolarModalLabel" aria-hidden="true"
+        style="width: 100%;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header p-4 fw-bold bg-gradient-primary-to-secondary">
+                    <h5 class=" modal-title text-white text-black" id="dolarModalLabel">Dolar Now</h5>
+                    <button class="btn-close btn-close-black" type="button" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body border-0 p-4" id="table-info">
+                    <div class="father-cards-dolar text-center fs-6">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <div class="card m-1 border border-dark rounded-3" id="dolar-oficial-estilo">
+                                    <div class="card-header fw-bolder">DOLAR OFICIAL</div>
+                                    <div class="card-body p-0">
+                                        <div class="card-group">
+                                            <div class="card border m-0 rounded-0" id="tabla-compra">
+                                                <div class="card-header fw-lighter fs-6">COMPRA</div>
+                                                <div class="card-body dolar-value compravalor" id="data.0.casa.compra">$
+                                                </div>
+                                            </div>
+                                            <div class="card border m-0 rounded-0" id="tabla-venta">
+                                                <div class="card-header fw-lighter fs-6">VENTA</div>
+                                                <div class="card-body dolar-value ventavalor" id="data.0.casa.venta">$
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer agenciavalor" id="data.0.casa.agencia">AGENCIA </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-group">
+                            <div class="card m-1 border border-dark rounded-3" id="dolar-blue">
+                                <div class="card-header fw-bolder">BLUE</div>
+                                <div class="card-body p-0">
+                                    <div class="card-group">
+                                        <div class="card border m-0 rounded-0" id="tabla-compra">
+                                            <div class="card-header fw-lighter fs-6">COMPRA</div>
+                                            <div class="card-body dolar-value compravalor" id="data.1.casa.compra">$
+                                            </div>
+                                        </div>
+                                        <div class="card border m-0 rounded-0" id="tabla-venta">
+                                            <div class="card-header fw-lighter fs-6">VENTA</div>
+                                            <div class="card-body dolar-value ventavalor" id="data.1.casa.venta">$</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer agenciavalor" id="data.1.casa.agencia">AGENCIA </div>
+                            </div>
+                            <div class="card m-1 border border-dark rounded-3" id="contado-con-liqui-dolar">
+                                <div class="card-header fw-bolder">CONTADO CON LIQUI</div>
+                                <div class="card-body p-0">
+                                    <div class="card-group">
+                                        <div class="card border m-0 rounded-0" id="tabla-compra">
+                                            <div class="card-header fw-lighter">COMPRA</div>
+                                            <div class="card-body dolar-value compravalor" id="data.3.casa.compra">$
+                                            </div>
+                                        </div>
+                                        <div class="card border m-0 rounded-0" id="tabla-venta">
+                                            <div class="card-header fw-lighter">VENTA</div>
+                                            <div class="card-body dolar-value ventavalor" id="data.3.casa.venta">$</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer agenciavalor" id="data.3.casa.agencia">AGENCIA </div>
+                            </div>
+                        </div>
+                        <div class="card-group">
+                            <div class="card m-1 border border-dark rounded-3" id="dolar-bolsa">
+                                <div class="card-header fw-bolder">BOLSA</div>
+                                <div class="card-body p-0">
+                                    <div class="card-group">
+                                        <div class="card border m-0 rounded-0" id="tabla-compra">
+                                            <div class="card-header fw-lighter">COMPRA</div>
+                                            <div class="card-body dolar-value compravalor" id="data.4.casa.compra">$
+                                            </div>
+                                        </div>
+                                        <div class="card border m-0 rounded-0" id="tabla-venta">
+                                            <div class="card-header fw-lighter">VENTA</div>
+                                            <div class="card-body dolar-value ventavalor" id="data.4.casa.venta">$</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer agenciavalor" id="data.4.casa.agencia">AGENCIA </div>
+                            </div>
+                            <div class="card m-1 border border-dark rounded-3" id="dolar-estilo">
+                                <div class="card-header fw-bolder">DOLAR</div>
+                                <div class="card-body p-0">
+                                    <div class="card-group">
+                                        <div class="card rounded-0" id="tabla-compra">
+                                            <div class="card-header fw-lighter">COMPRA</div>
+                                            <div class="card-body dolar-value compravalor" id="data.7.casa.compra">$
+                                            </div>
+                                        </div>
+                                        <div class="card rounded-0" id="tabla-venta">
+                                            <div class="card-header fw-lighter">VENTA</div>
+                                            <div class="card-body dolar-value ventavalor" id="data.7.casa.venta">$</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer agenciavalor" id="data.7.casa.agencia">AGENCIA</div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn bg-dark btn-dark col-6 mt-3 mb-3"
+                            onclick="actualizarCotizaciones()">Actualizar Cotizaciones</button>
+                        <button type="button" class="btn bg-gradient-primary-to-secondary col-6 text-white" onclick="descargarCotizaciones()">Descargar
+                            Cotizaciones</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
             <div class="container px-5">
@@ -39,6 +154,11 @@
                         class="nav-link me-lg-3 text-dark" href="#">Dolar Now</a>
                         </li>
                     </ul>
+
+
+
+
+                    
                     <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
                             <i class="bi-chat-text-fill me-2"></i>
@@ -171,7 +291,9 @@
                                         <!-- * * This can be a video, image, or just about anything else.-->
                                         <!-- * * Set the max width of your media to 100% and the height to-->
                                         <!-- * * 100% like the demo example below.-->
-                                        <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%"><source src="{% static 'landing_page/assets/img/demo-screen.mp4' %}" type="video/mp4" /></video>
+                                        <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%">
+                                            <source src="{% static 'landing_page/assets/img/demo-screen.mp4' %}" type="video/mp4" />
+                                        </video>
                                     </div>
                                 </div>
                             </div>
@@ -184,24 +306,32 @@
         <section class="bg-light">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
-                    <div class="col-12 col-lg-5">
-                        <h2 class="display-4 lh-1 mb-4">Entra en la nueva era de bancos digitales</h2>
+                    <div class="col-12 col-sm-12 col-md-5 col-lg-7">
+                        <h2 class="display-4 lh-1 mb-5">Entra en la nueva era de bancos digitales</h2>
                         <p class="lead fw-normal text-muted mb-5 mb-lg-0">
                             Los bancos se reinventaron y trajeron una nueva solucion: ¡Bancos ficticios!
                             Vas a poder imaginarte tomandote un Martini en Puerto Rico desde la comodida de tu casa, 
                             ¡Nosotros cubrimos los costos!
                         </p>
                     </div>
-                    <div class="col-sm-8 col-md-6">
-                        <div class="px-5 px-sm-0"><img class="img-fluid rounded-circle" src="https://a.cdn-hotels.com/gdcs/production182/d660/7fe239d2-a8ae-4bc2-80c5-ab80064977b9.jpg?impolicy=fcrop&w=1600&h=1066&q=medium" alt="..." /></div>
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-5 text-center">
+                        <div class="text-center">
+                            <img class="rounded-circle" style = "max-width: 90%; height: 100%" src="{% static 'landing_page/assets/img/playa.png' %}" alt="..." />
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Call to action section-->
-        <video autoplay muted loop>
+        <video autoplay muted loop class = "videovisa">
             <source src="{% static 'landing_page/assets/VISA--PUBLICIDAD.mp4' %}">
         </video>
+        <style>
+            .videovisa{
+                width: 100% !important;
+                height: auto !important;
+            }
+        </style>
         <section class="cta">
             <div class="cta-content">
                 <div class="container px-5">
@@ -210,7 +340,7 @@
                         <br />
                         para conseguir la tuya.
                     </h2>
-                    <a class="btn btn-outline-light py-3 px-4 rounded-pill" href="{{url}}" target="_blank">Registrate</a>
+                    <a class="btn btn-outline-light py-3 px-4 rounded-pill" href="#" target="_blank">Registrate</a>
                 </div>
             </div>
         </section>
@@ -246,13 +376,6 @@
                         <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body border-0 p-4">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
                         <div class="container-form">
 
                             <form action="" method="post">{% csrf_token %}
@@ -292,119 +415,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="modal fade" id="dolarModal" tabindex="-1" aria-labelledby="dolarModalLabel" aria-hidden="true"
-        style="width: 100%;">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header p-4 fw-bold" style="background-color: #FEDE3B;">
-                    <h5 class=" modal-title font-alt text-black" id="dolarModalLabel">Dolar Now</h5>
-                    <button class="btn-close btn-close-black" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body border-0 p-4" id="table-info">
-                    <div class="father-cards-dolar text-center fs-6">
-                        <div class="row justify-content-center">
-                            <div class="col">
-                                <div class="card m-1 border border-dark rounded-3" id="dolar-oficial-estilo">
-                                    <div class="card-header fw-bolder">DOLAR OFICIAL</div>
-                                    <div class="card-body p-0">
-                                        <div class="card-group">
-                                            <div class="card border m-0 rounded-0" id="tabla-compra">
-                                                <div class="card-header fw-lighter fs-6">COMPRA</div>
-                                                <div class="card-body dolar-value compravalor" id="data.0.casa.compra">$
-                                                </div>
-                                            </div>
-                                            <div class="card border m-0 rounded-0" id="tabla-venta">
-                                                <div class="card-header fw-lighter fs-6">VENTA</div>
-                                                <div class="card-body dolar-value ventavalor" id="data.0.casa.venta">$
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer agenciavalor" id="data.0.casa.agencia">AGENCIA </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-group">
-                            <div class="card m-1 border border-dark rounded-3" id="dolar-blue">
-                                <div class="card-header fw-bolder">BLUE</div>
-                                <div class="card-body p-0">
-                                    <div class="card-group">
-                                        <div class="card border m-0 rounded-0" id="tabla-compra">
-                                            <div class="card-header fw-lighter fs-6">COMPRA</div>
-                                            <div class="card-body dolar-value compravalor" id="data.1.casa.compra">$
-                                            </div>
-                                        </div>
-                                        <div class="card border m-0 rounded-0" id="tabla-venta">
-                                            <div class="card-header fw-lighter fs-6">VENTA</div>
-                                            <div class="card-body dolar-value ventavalor" id="data.1.casa.venta">$</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer agenciavalor" id="data.1.casa.agencia">AGENCIA </div>
-                            </div>
-                            <div class="card m-1 border border-dark rounded-3" id="contado-con-liqui-dolar">
-                                <div class="card-header fw-bolder">CONTADO CON LIQUI</div>
-                                <div class="card-body p-0">
-                                    <div class="card-group">
-                                        <div class="card border m-0 rounded-0" id="tabla-compra">
-                                            <div class="card-header fw-lighter">COMPRA</div>
-                                            <div class="card-body dolar-value compravalor" id="data.3.casa.compra">$
-                                            </div>
-                                        </div>
-                                        <div class="card border m-0 rounded-0" id="tabla-venta">
-                                            <div class="card-header fw-lighter">VENTA</div>
-                                            <div class="card-body dolar-value ventavalor" id="data.3.casa.venta">$</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer agenciavalor" id="data.3.casa.agencia">AGENCIA </div>
-                            </div>
-                        </div>
-                        <div class="card-group">
-                            <div class="card m-1 border border-dark rounded-3" id="dolar-bolsa">
-                                <div class="card-header fw-bolder">BOLSA</div>
-                                <div class="card-body p-0">
-                                    <div class="card-group">
-                                        <div class="card border m-0 rounded-0" id="tabla-compra">
-                                            <div class="card-header fw-lighter">COMPRA</div>
-                                            <div class="card-body dolar-value compravalor" id="data.4.casa.compra">$
-                                            </div>
-                                        </div>
-                                        <div class="card border m-0 rounded-0" id="tabla-venta">
-                                            <div class="card-header fw-lighter">VENTA</div>
-                                            <div class="card-body dolar-value ventavalor" id="data.4.casa.venta">$</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer agenciavalor" id="data.4.casa.agencia">AGENCIA </div>
-                            </div>
-                            <div class="card m-1 border border-dark rounded-3" id="dolar-estilo">
-                                <div class="card-header fw-bolder">DOLAR</div>
-                                <div class="card-body p-0">
-                                    <div class="card-group">
-                                        <div class="card rounded-0" id="tabla-compra">
-                                            <div class="card-header fw-lighter">COMPRA</div>
-                                            <div class="card-body dolar-value compravalor" id="data.7.casa.compra">$
-                                            </div>
-                                        </div>
-                                        <div class="card rounded-0" id="tabla-venta">
-                                            <div class="card-header fw-lighter">VENTA</div>
-                                            <div class="card-body dolar-value ventavalor" id="data.7.casa.venta">$</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer agenciavalor" id="data.7.casa.agencia">AGENCIA</div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-warning col-6 mt-3 mb-3"
-                            onclick="actualizarCotizaciones()">Actualizar Cotizaciones</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
