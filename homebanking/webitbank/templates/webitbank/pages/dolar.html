@@ -17,42 +17,130 @@
             
       <!-- Finalizan las tabs -->
 
-    </section>
-    <template id="template">
-        <div class="col-sm-4">
-          <div class="card dolar">
-            <div class="card-body">
-              <h3 class="card-title">Dolar
-                <!--Variar según dato-->
-              </h3>
-              <div class="row compra-venta">
-                <!--Compra-->
-                <div class="col-6">
-                  <p class="card-text">Compra</p>
-                  <h3 class="precio compra">$
-                    <!--Precio-->
-                  </h3>
+      <div class="container border-0 p-4" id="table-info">
+
+        <div class="text-center fs-6">
+          <div class="row justify-content-center">
+              {% comment "row" %}{% endcomment %}
+            <div class="card-group col-12 m-0 p-0 col-12">
+              <div class="card m-0 border border-dark rounded-3" id="dolar-oficial-estilo">
+                <div class="card-header pb-sm-0 pb-md-4 pb-4 fw-bolder">DOLAR OFICIAL</div>
+                <div class="card-body p-0">
+                  <div class="card border m-0 rounded-0" id="tabla-compra">
+                    <div class="card-header fw-lighter fs-6">COMPRA</div>
+                    <div class="card-body dolar-value compravalor" id="data.0.casa.compra">$</div>
+                  </div>
+                  <div class="card border m-0 rounded-0" id="tabla-venta">
+                    <div class="card-header fw-lighter fs-6">VENTA</div>
+                    <div class="card-body dolar-value ventavalor" id="data.0.casa.venta">$</div>
+                  </div>
+                  <div class="card-footer agenciavalor" id="data.0.casa.agencia">AGENCIA </div>
                 </div>
-                <!--Venta-->
-                <div class="col-6">
-                  <p class="card-text">Venta</p>
-                  <h3 class="precio venta">$
-                    <!--Precio-->
-                  </h3>
-                </div>
-                <p class="card-subtitle">variación:
-                  <!--+/-numero%-->
-                </p>
               </div>
-              <p class="card-text fecha">ACTUALIZADO:
-                <!--fecha y hora-->
-              </p>
+              <div class="card m-0 border border-dark rounded-3" id="dolar-blue">
+                <div class="card-header pb-4 fw-bolder">BLUE</div>
+                <div class="card-body p-0">
+                  <div class="card border m-0 rounded-0" id="tabla-compra">
+                    <div class="card-header fw-lighter fs-6">COMPRA</div>
+                    <div class="card-body dolar-value compravalor" id="data.1.casa.compra">$</div>
+                    </div>
+                  <div class="card border m-0 rounded-0" id="tabla-venta">
+                    <div class="card-header fw-lighter fs-6">VENTA</div>
+                    <div class="card-body dolar-value ventavalor" id="data.1.casa.venta">$</div>
+                    </div>
+                  <div class="card-footer agenciavalor" id="data.1.casa.agencia">AGENCIA </div>
+                </div>
+              </div>
+              <div class="card m-0 border border-dark rounded-3" id="contado-con-liqui-dolar">
+                <div class="card-header pb-1 pt-2 fw-bolder">CONTADO CON LIQUI</div>
+                <div class="card-body p-0">
+                  <div class="card border m-0 rounded-0" id="tabla-compra">
+                    <div class="card-header fw-lighter">COMPRA</div>
+                    <div class="card-body dolar-value compravalor" id="data.3.casa.compra">$</div>
+                    </div>
+                  <div class="card border m-0 rounded-0" id="tabla-venta">
+                    <div class="card-header fw-lighter">VENTA</div>
+                    <div class="card-body dolar-value ventavalor" id="data.3.casa.venta">$</div>
+                  </div>
+                  <div class="card-footer agenciavalor" id="data.3.casa.agencia">AGENCIA </div>
+                </div>
+              </div>
+              <div class="card m-0 border border-dark rounded-3" id="dolar-bolsa">
+                <div class="card-header pb-4 fw-bolder">BOLSA</div>
+                <div class="card-body p-0">
+                  <div class="card border m-0 rounded-0" id="tabla-compra">
+                    <div class="card-header fw-lighter">COMPRA</div>
+                    <div class="card-body dolar-value compravalor" id="data.4.casa.compra">$</div>
+                    </div>
+                  <div class="card border m-0 rounded-0" id="tabla-venta">
+                    <div class="card-header fw-lighter">VENTA</div>
+                    <div class="card-body dolar-value ventavalor" id="data.4.casa.venta">$</div>
+                    </div>
+                  <div class="card-footer agenciavalor" id="data.4.casa.agencia">AGENCIA </div>
+                </div>
+              </div>
+              <div class="card m-0 border border-dark rounded-3" id="dolar-estilo">
+                <div class="card-header pb-4 fw-bolder">DOLAR</div>
+                <div class="card-body p-0">
+                  <div class="card rounded-0" id="tabla-compra">
+                    <div class="card-header fw-lighter">COMPRA</div>
+                    <div class="card-body dolar-value compravalor" id="data.7.casa.compra">$</div>
+                  </div>
+                  <div class="card rounded-0" id="tabla-venta">
+                    <div class="card-header fw-lighter">VENTA</div>
+                    <div class="card-body dolar-value ventavalor" id="data.7.casa.venta">$</div>
+                  </div>
+                  <div class="card-footer agenciavalor" id="data.7.casa.agencia">AGENCIA</div>
+                </div>
+              </div>
+
             </div>
           </div>
+          <div class="row justify-content-end">
+            <div class="col-6">
+              <button type="button" class="btn bg-dark btn-dark mt-3 mt-3 mb-3"
+                onclick="actualizarCotizaciones()">Actualizar Cotizaciones</button>
+              <button type="button" class="btn bg-gradient-primary-to-secondary mt-3 mb-3 text-white" 
+              onclick="descargarCotizaciones()">Descargar cotizaciones</button>
+              <style>.bg-gradient-primary-to-secondary{background-color:#4abdac}.btn-dark{background-color:#d1d3e2;}</style>
+            </div>
+          </div>
+
         </div>
-      </template>
-  </main>
-  
+      </div>
+      
+      <script>
+    const API_URL = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
+    const aCompras = document.getElementsByClassName('compravalor');
+    const aVentas = document.getElementsByClassName('ventavalor');
+    const aAgencias = document.getElementsByClassName('agenciavalor');
+    window.onload = actualizarCotizaciones();
+    
+    function actualizarCotizaciones() {
+        let aDataCompras = [], aDataVentas = [], aDataAgencias = [];
+        for (let i = 0; i < aVentas.length; i++) {
+            aVentas[i].innerHTML = "Cargando...";
+            aAgencias[i].innerHTML = "Cargando...";
+            aCompras[i].innerHTML = "Cargando...";
+        }
+      fetch(API_URL)
+        .then((response) => response.json())
+        .then((data) => {
+            for (const item of data) {
+                if (item.casa.nombre.includes('Dolar') && !item.casa.compra.includes('No Cotiza')) {
+                    aDataCompras.push(item.casa.compra);
+                    aDataVentas.push(item.casa.venta);
+                    aDataAgencias.push(item.casa.agencia);
+                }
+            }
+            for (let i = 0; i < aVentas.length; i++) {
+                aVentas[i].innerHTML = '$' + aDataVentas[i];
+                aAgencias[i].innerHTML = 'Agencia ' + aDataAgencias[i];
+                aCompras[i].innerHTML = '$' + aDataCompras[i];
+            }
+    })}
+
+  </script>
   <!--  pie de página principal -->
   {%endblock%}
 

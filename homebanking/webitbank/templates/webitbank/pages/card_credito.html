@@ -1,0 +1,45 @@
+{% extends 'webitbank/base.html' %}
+{% load static %}
+{% block custom_head %}
+<link rel="stylesheet" href="{% static 'app_page/css/card_credito.css' %}">
+{% endblock custom_head %}
+{% block content %}
+<div class="container justify-content-center">
+    <div class="row">
+    {% for i in query %}
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-2">
+            <div class="card mt-2 mb-2 p-xl-5 ms-xl-5 me-xl-5">
+                <div class="card__front card__part">
+                    <img class="card__front-square card__square" src="{% static 'app_page/img/pngwing.com.png' %}">
+                    <img class="card__front-logo card__logo" src="{% static 'app_page/img/visa-png.png' %}">
+                    <p class="card_numer">{{i.numero_tarjeta}}</p>
+                    <div class="card__space-75">
+                        <span class="card__label">Card holder</span>
+                        <p class="card__info">{{cliente.customer_name}}</p>
+                    </div>
+                    <div class="card__space-25">
+                        <span class="card__label">Expires</span>
+                            <p class="card__info">{{i.fecha_expiracion}}</p>
+                    </div>
+                </div>
+
+                <div class="card__back card__part">
+                    <div class="card__black-line">
+
+                    </div>
+                    <div class="card__back-content">
+                        <div class="card__secret">
+                            <p class="card__secret--last">{{i.cvv}}</p>
+                        </div>
+                        <img class="card__back-square card__square" 
+                        src="{% static 'app_page/img/pngwing.com.png' %}">
+                        <img class="card__back-logo card__logo" 
+                        src="{% static 'app_page/img/visa-png.png' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock content %}

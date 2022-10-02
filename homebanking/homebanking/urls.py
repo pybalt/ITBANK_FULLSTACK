@@ -35,4 +35,6 @@ urlpatterns = [
     path('accounts/',           include('django.contrib.auth.urls')),
     path('preguntasFrecuentes/',     views.preguntasFrecuentes,             name="preguntasFrecuentes"),
     path('api/',                include('API.urls')),
+    path('credito/',            views.tarjeta_credito,                      name="credito"),
+    path('debito/',             views.tarjeta_debito,                       name="debito"),
 ]

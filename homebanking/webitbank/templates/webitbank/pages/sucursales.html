@@ -4,34 +4,38 @@
 {% block title%} Sucursales {% endblock %}
 
 {% block content %}
-<div class="conteiner">
-  <div class="conteinerTitulos">
-    <h3>Sucursales</h3>
-      <button class="btnConsultas btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Consultas y Operaciones
-      </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Mi sucursal</a></li>
-        
-    </ul>
+<div class = "container">
+  <div class = "row">
+    <div class="col-12">
+      <h3>Sucursales</h3>
+        <button class="btnConsultas btn-secondary dropdown-toggle" 
+        type="button" id="dropdownMenuButton1" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false">
+            Consultas y Operaciones
+        </button>
+      <hr class="sidebar-divider">
+    </div>
   </div>
-<div class="conteinerUbi ">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d9205725.39187377!2d-65.14870578345918!3d-37.18994284522322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1661736573870!5m2!1ses!2sar"  height="550" style="border:0; margin-top: 25px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="col-4 mapa"></iframe>
-    <div class="conteinerDatoSucursal col-7">
+  <div class = "row">
+    <div class="col-7 mt-1 ms-0 ps-0">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d9205725.39187377!2d-65.14870578345918!3d-37.18994284522322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1661736573870!5m2!1ses!2sar"  
+        height="550" 
+        style="border:0" 
+        allowfullscreen="false" loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade" 
+        class="col-12"></iframe>
+    </div>
+    <div class="col-5">
     {% for sucursal in sucursal_list %}
-    
-        <div class="datoSucursal">    
-          <p> Dirección: {{ sucursal.branch_address.calle }} {{ sucursal.branch_address.numero }}</p>
-          <h2>{{ sucursal.branch_address.ciudad }}, {{ sucursal.branch_address.provincia }}</h2>
-          <h3>De Lunes a viernes de 08:30 a 16:30hs</h3>
-        </div>
-      
-        
-      
-{% endfor %}
-    
-</div>
-</div>
-  
-</div>
-{% endblock %}
+      <div class = "mt-3 ps-0 ms-0">    
+        <h2>{{ sucursal.branch_address.ciudad }}, {{ sucursal.branch_address.provincia }}</h2>
+        <h3> Dirección: {{ sucursal.branch_address.calle }} {{ sucursal.branch_address.numero }}</h3>
+        <p>De Lunes a viernes de 08:30 a 16:30hs</p>
+      </div>    
+      <hr class="sidebar-divider">    
+    {% endfor %}
+    </div>
+      {% endblock %}
+  </div>
