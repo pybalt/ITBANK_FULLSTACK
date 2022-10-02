@@ -91,7 +91,6 @@ def preguntasFrecuentes(request):
                   'NO, solo para compra, refacción o ampliación de vivienda.',
                   'Un Préstamo Prendario es un plan de financiación para la compra de vehículos para uso particular.',
                   ]
-    id
     context = {'numero_de_preguntas':range(len(preguntas)),
                'preguntas':preguntas,
                'respuestas':respuestas}
