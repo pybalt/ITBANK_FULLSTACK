@@ -31,3 +31,4 @@ Y una vez activado, instalar las dependencias
     (virtualenv)
     pip install -r requirements.txt
 
+Los usuarios y sus contraseñas estan en el archivo 'postman_collection.json'
